@@ -4,6 +4,7 @@ node {
   stage('Fetch repository') {
     deleteDir()
     checkout scm
+    sh 'chmod 666 -R .'
   }
 
   stage('Create build environment') {
@@ -11,7 +12,7 @@ node {
   }
 
   stage('Build project') {
-    app.inside("-u root") {
+    app.inside {
       sh "mdtool build --target:Build '--configuration:Release|x86' --project:TarponSimulator2017"
       sh 'ln -s TarponSimulator2017/bin/Release/ TarponSim2017'
       sh 'zip -r TarponSimulator2017.zip TarponSim2017'
