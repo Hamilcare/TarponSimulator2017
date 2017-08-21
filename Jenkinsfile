@@ -7,7 +7,7 @@ node {
   }
 
   stage('Build project') {
-    app.inside {
+    app.inside("-u root") {
       checkout scm
       sh "mdtool build --target:Build '--configuration:Release|x86' --project:TarponSimulator2017"
       sh 'ln -s TarponSimulator2017/bin/Release/ TarponSim2017'
