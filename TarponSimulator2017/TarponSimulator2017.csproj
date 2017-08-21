@@ -33,8 +33,12 @@
   <ItemGroup>
     <None Include="MonoGame.Framework.dll.config" />
     <None Include="packages.config" />
-    <None Include="Content\chirac.png" />
-    <None Include="Content\tarpon.png" />
+    <None Include="Content\chirac.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\tarpon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

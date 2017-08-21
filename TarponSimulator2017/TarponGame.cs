@@ -67,8 +67,8 @@ namespace TarponSimulator2017
 		protected override void LoadContent(){
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			player.LoadContent (graphics.GraphicsDevice,"../../Content/chirac.png");
-			tarpon.LoadContent (graphics.GraphicsDevice, "../../Content/tarpon.png");
+			player.LoadContent (graphics.GraphicsDevice,"Content/chirac.png");
+			tarpon.LoadContent (graphics.GraphicsDevice, "Content/tarpon.png");
 			
 		}
 
