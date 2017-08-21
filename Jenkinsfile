@@ -15,5 +15,5 @@ node {
       archiveArtifacts artifacts: 'TarponSimulator2017.zip'
     }
   }
-
+}
 
