@@ -1,16 +1,18 @@
-﻿<Properties StartupItem="TarponSimulator2017/TarponSimulator2017.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="TarponSimulator2017/packages.config">
+﻿<Properties StartupConfiguration="{4DC88FC1-C0C7-4542-BCB4-66EB064779CD}|Default" StartupItem="TarponSimulator2017/TarponSimulator2017.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TarponSimulator2017/TarponGame.cs">
     <Files>
       <File FileName="TarponSimulator2017/MonoGame.Framework.dll.config" Line="1" Column="1" />
-      <File FileName="TarponSimulator2017/TarponGame.cs" Line="79" Column="1" />
+      <File FileName="TarponSimulator2017/TarponGame.cs" Line="1" Column="1" />
       <File FileName="TarponSimulator2017/Sprite.cs" Line="1" Column="1" />
-      <File FileName="TarponSimulator2017/Player.cs" Line="38" Column="12" />
+      <File FileName="TarponSimulator2017/Player.cs" Line="1" Column="1" />
       <File FileName="TarponSimulator2017/packages.config" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.TarponSimulator2017 PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

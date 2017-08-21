@@ -30,14 +30,14 @@ namespace TarponSimulator2017
 			get { return _direction; }
 			set { _direction = Vector2.Normalize(value); }
 		}
-		private Vector2 _direction;
+		protected Vector2 _direction;
 
 		public float Speed
 		{
 			get { return _speed; }
 			set { _speed = value; }
 		}
-		private float _speed;
+		protected float _speed;
 
 		public virtual void Initialize()
 		{

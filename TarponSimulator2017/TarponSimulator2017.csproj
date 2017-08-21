@@ -34,6 +34,7 @@
     <None Include="MonoGame.Framework.dll.config" />
     <None Include="packages.config" />
     <None Include="Content\chirac.png" />
+    <None Include="Content\tarpon.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -44,6 +45,7 @@
     <Compile Include="TarponGame.cs" />
     <Compile Include="Sprite.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Tarpon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />

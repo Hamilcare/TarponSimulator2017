@@ -20,13 +20,14 @@ namespace TarponSimulator2017
 		public SpriteBatch _spriteBatch { get; private set; }
 
 		private Player player;
+		private Tarpon tarpon;
 
 		private KeyboardState _keyboardState;
 		private KeyboardState _oldKeyboardState;
 		private MouseState _mouseState;
 
-		public int WIDTH;
-		public int HEIGHT;
+		static public int WIDTH;
+		static public int HEIGHT;
 
 
 		public TarponGame ()
@@ -35,7 +36,7 @@ namespace TarponSimulator2017
 
 			//Content.RootDirectory = "Content";
 			graphics.IsFullScreen = false;
-			Window.AllowUserResizing = true;
+			//Window.AllowUserResizing = true;
 			Window.Title = "TARPON";
 			Window.Position = new Microsoft.Xna.Framework.Point(0, 0);
 			Window.IsBorderless = false;
@@ -56,6 +57,9 @@ namespace TarponSimulator2017
 			player = new Player ();
 			player.Initialize ();
 
+			tarpon = new Tarpon ();
+			tarpon.Initialize ();
+
 			base.Initialize();
 		}
 			
@@ -64,6 +68,7 @@ namespace TarponSimulator2017
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			player.LoadContent (graphics.GraphicsDevice,"../../Content/chirac.png");
+			tarpon.LoadContent (graphics.GraphicsDevice, "../../Content/tarpon.png");
 			
 		}
 
@@ -77,7 +82,7 @@ namespace TarponSimulator2017
 
 			_oldKeyboardState = _keyboardState;
 
-
+			tarpon.Update (gameTime);
 
 			base.Update(gameTime);
 		}
@@ -91,7 +96,9 @@ namespace TarponSimulator2017
 			// Start drawing
 			_spriteBatch.Begin();
 			// Draw the Player
+			tarpon.Draw (_spriteBatch, gameTime);
 			player.Draw(_spriteBatch, gameTime);
+
 
 			// Stop drawing
 			_spriteBatch.End();
