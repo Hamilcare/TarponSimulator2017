@@ -4,7 +4,6 @@ node {
   stage('Fetch repository') {
     deleteDir()
     checkout scm
-    sh 'chmod 666 -R .'
   }
 
   stage('Create build environment') {
