@@ -24,3 +24,27 @@ batard commit -a -m "blablab"
 batard pull
 batard push
 ```
+
+### Install Monogame Pipeline Tool
+
+You need these dependencies:
+
+```
+sudo dnf install gtk-sharp3 gtk-sharp3-devel
+```
+
+Now download and install the SDK:
+
+```
+wget http://www.monogame.net/releases/v3.6/monogame-sdk.run
+chmod +x ./monogame-sdk.run
+sudo ./monogame-sdk.run
+```
+
+And run it:
+
+```
+monogame-pipeline-tool
+```
+
+Tadaaaa....
