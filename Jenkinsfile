@@ -13,6 +13,7 @@ node {
   stage('Build project') {
     app.inside {
       withEnv(["HOME=${ pwd() }"]) {
+        sh 'nuget restore ./TarponSimulator2017.sln'
         sh "mdtool build --target:Build '--configuration:Release|x86' --project:TarponSimulator2017"
       }
       sh 'ln -s TarponSimulator2017/bin/Release/ TarponSim2017'
