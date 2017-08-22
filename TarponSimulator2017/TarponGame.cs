@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Input;
 
 using TarponSimulator2017;
 
+using Core;
+
 namespace TarponSimulator2017
 {
 	public class TarponGame : Microsoft.Xna.Framework.Game
@@ -20,7 +22,7 @@ namespace TarponSimulator2017
 		public SpriteBatch _spriteBatch { get; private set; }
 
 		private Player player;
-		private Tarpon tarpon;
+		private Boat boat;
 
 		private KeyboardState _keyboardState;
 		private KeyboardState _oldKeyboardState;
@@ -28,6 +30,7 @@ namespace TarponSimulator2017
 
 		static public int WIDTH;
 		static public int HEIGHT;
+
 
 
 		public TarponGame ()
@@ -54,11 +57,10 @@ namespace TarponSimulator2017
 			HEIGHT = Window.ClientBounds.Height;
 			WIDTH = Window.ClientBounds.Width;
 
+			boat = new Boat ();
+			boat.Initialize ();
 			player = new Player ();
-			player.Initialize ();
-
-			tarpon = new Tarpon ();
-			tarpon.Initialize ();
+			player.Initialize (boat);
 
 			base.Initialize();
 		}
@@ -68,21 +70,20 @@ namespace TarponSimulator2017
 			_spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			player.LoadContent (graphics.GraphicsDevice,"Content/chirac.png");
-			tarpon.LoadContent (graphics.GraphicsDevice, "Content/tarpon.png");
+
 			
 		}
 
 		protected override void Update(GameTime gameTime)
 		{
-			
-
 			_keyboardState = Keyboard.GetState();
 			_mouseState = Mouse.GetState ();
-			player.HandleInput(_keyboardState,_mouseState);
+
+			boat.HandleInput(_keyboardState, _oldKeyboardState, _mouseState);
 
 			_oldKeyboardState = _keyboardState;
 
-			tarpon.Update (gameTime);
+
 
 			base.Update(gameTime);
 		}
@@ -96,7 +97,7 @@ namespace TarponSimulator2017
 			// Start drawing
 			_spriteBatch.Begin();
 			// Draw the Player
-			tarpon.Draw (_spriteBatch, gameTime);
+
 			player.Draw(_spriteBatch, gameTime);
 
 
