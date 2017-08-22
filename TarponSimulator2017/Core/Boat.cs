@@ -64,12 +64,12 @@ namespace Core
 				this._position.X-=Speed;
 			}
 
-			if(_keyboardState.IsKeyDown(Keys.A))
+			if(_keyboardState.IsKeyDown(Keys.A) && !_oldKeyboardState.IsKeyDown(Keys.A))
 			{
 				this._speed++;
 			}
 
-			if(_keyboardState.IsKeyDown(Keys.Q))
+			if(_keyboardState.IsKeyDown(Keys.Q) && !_oldKeyboardState.IsKeyDown(Keys.Q) && this._speed>=0)
 			{
 				this._speed--;
 			}
