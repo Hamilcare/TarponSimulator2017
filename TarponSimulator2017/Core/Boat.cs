@@ -13,32 +13,17 @@ namespace Core
 		{
 		}
 
-		public Vector Position
-		{
-			get { return _position; }
-			set { _position = value; }
-		}
-		protected Vector _position;
+		public Vector Position { get; private set; }
 
-		protected Vector Direction
-		{
-			get { return _direction; }
-			set { _direction = value; }
-		}
-		protected Vector _direction;
+		public Vector Direction { get; private set; }
 
-		public int Speed
-		{
-			get { return _speed; }
-			set { _speed = value; }
-		}
-		protected int _speed;
+		public int Speed { get; private set;}
 
 		public void Initialize()
 		{
-			_position = new Vector(0,0);
-			_direction = new Vector(1,1);
-			_speed = 0;
+			Position = new Vector(0,0);
+			Direction = new Vector(1,1);
+			Speed = 0;
 
 		}
 
@@ -48,30 +33,30 @@ namespace Core
 
 			if (_keyboardState.IsKeyDown(Keys.Up))
 			{
-				this._position.Y-=_speed;
+				this.Position=new Vector(this.Position.X,this.Position.Y-Speed);
 			}
 			else if (_keyboardState.IsKeyDown(Keys.Down))
 			{
-				this._position.Y+=_speed;
+				this.Position=new Vector(this.Position.X,this.Position.Y+Speed);
 			}
 
 			if (_keyboardState.IsKeyDown(Keys.Right))
 			{
-				this._position.X+=_speed;
+				this.Position=new Vector(this.Position.X+Speed,this.Position.Y);
 			}
 			else if (_keyboardState.IsKeyDown(Keys.Left))
 			{
-				this._position.X-=Speed;
+				this.Position=new Vector(this.Position.X-Speed,this.Position.Y);
 			}
 
 			if(_keyboardState.IsKeyDown(Keys.A) && !_oldKeyboardState.IsKeyDown(Keys.A))
 			{
-				this._speed++;
+				this.Speed++;
 			}
 
-			if(_keyboardState.IsKeyDown(Keys.Q) && !_oldKeyboardState.IsKeyDown(Keys.Q) && this._speed>=0)
+			if(_keyboardState.IsKeyDown(Keys.Q) && !_oldKeyboardState.IsKeyDown(Keys.Q) && this.Speed>0)
 			{
-				this._speed--;
+				this.Speed--;
 			}
 
 

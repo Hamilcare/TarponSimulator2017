@@ -12,12 +12,9 @@ using Core;
 namespace TarponSimulator2017
 {	public class Sprite
 	{
-		public Texture2D Texture
-		{
-			get { return _texture; }
-			set { _texture = value; }
-		}
-		protected Texture2D _texture;
+		public Texture2D Texture { get; set;}
+
+
 
 		public virtual void Initialize()
 		{
@@ -27,7 +24,7 @@ namespace TarponSimulator2017
 
 		public virtual void LoadContent(GraphicsDevice graphics, string filename)
 		{
-			this._texture = LoadPicture (graphics, filename);
+			this.Texture = LoadPicture (graphics, filename);
 		}
 
 
@@ -41,8 +38,6 @@ namespace TarponSimulator2017
 		}
 
 	}
-
-
 
 }
 

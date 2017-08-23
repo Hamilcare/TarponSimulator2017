@@ -19,14 +19,14 @@ namespace TarponSimulator2017
 	{
 		GraphicsDeviceManager graphics;
 
-		public SpriteBatch _spriteBatch { get; private set; }
+		public SpriteBatch spriteBatch { get; private set; }
 
 		private Player player;
 		private Boat boat;
 
-		private KeyboardState _keyboardState;
-		private KeyboardState _oldKeyboardState;
-		private MouseState _mouseState;
+		private KeyboardState keyboardState;
+		private KeyboardState oldKeyboardState;
+		private MouseState mouseState;
 
 		static public int WIDTH;
 		static public int HEIGHT;
@@ -67,7 +67,7 @@ namespace TarponSimulator2017
 			
 
 		protected override void LoadContent(){
-			_spriteBatch = new SpriteBatch(GraphicsDevice);
+			spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			player.LoadContent (graphics.GraphicsDevice,"Content/chirac.png");
 
@@ -76,12 +76,12 @@ namespace TarponSimulator2017
 
 		protected override void Update(GameTime gameTime)
 		{
-			_keyboardState = Keyboard.GetState();
-			_mouseState = Mouse.GetState ();
+			keyboardState = Keyboard.GetState();
+			mouseState = Mouse.GetState ();
 
-			boat.HandleInput(_keyboardState, _oldKeyboardState, _mouseState);
+			boat.HandleInput(keyboardState, oldKeyboardState, mouseState);
 
-			_oldKeyboardState = _keyboardState;
+			oldKeyboardState = keyboardState;
 
 
 
@@ -95,14 +95,14 @@ namespace TarponSimulator2017
 			base.Draw(gameTime);
 
 			// Start drawing
-			_spriteBatch.Begin();
+			spriteBatch.Begin();
 			// Draw the Player
 
-			player.Draw(_spriteBatch, gameTime);
+			player.Draw(spriteBatch, gameTime);
 
 
 			// Stop drawing
-			_spriteBatch.End();
+			spriteBatch.End();
 		}
 
 		public Texture2D LoadPicture(string Filename)
