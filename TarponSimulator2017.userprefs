@@ -1,11 +1,10 @@
-﻿<Properties StartupConfiguration="{4DC88FC1-C0C7-4542-BCB4-66EB064779CD}|Default" StartupItem="TarponSimulator2017/TarponSimulator2017.csproj">
+﻿<Properties StartupConfiguration="{4DC88FC1-C0C7-4542-BCB4-66EB064779CD}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="TarponSimulator2017/TarponGame.cs">
     <Files>
-      <File FileName="TarponSimulator2017/MonoGame.Framework.dll.config" Line="1" Column="1" />
-      <File FileName="TarponSimulator2017/TarponGame.cs" Line="1" Column="1" />
-      <File FileName="TarponSimulator2017/Sprite.cs" Line="1" Column="1" />
-      <File FileName="TarponSimulator2017/Player.cs" Line="1" Column="1" />
-      <File FileName="TarponSimulator2017/packages.config" Line="1" Column="1" />
+      <File FileName="TarponSimulator2017/TarponGame.cs" Line="49" Column="28" />
+      <File FileName="TarponSimulator2017/Core/Boat.cs" Line="1" Column="1" />
+      <File FileName="TarponSimulator2017/View/Sprite.cs" Line="49" Column="1" />
+      <File FileName="TarponSimulator2017/View/Player.cs" Line="36" Column="55" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

@@ -11,23 +11,26 @@ using Microsoft.Xna.Framework.Input;
 
 using TarponSimulator2017;
 
+using Core;
+
 namespace TarponSimulator2017
 {
 	public class TarponGame : Microsoft.Xna.Framework.Game
 	{
 		GraphicsDeviceManager graphics;
 
-		public SpriteBatch _spriteBatch { get; private set; }
+		public SpriteBatch spriteBatch { get; private set; }
 
 		private Player player;
-		private Tarpon tarpon;
+		private Boat boat;
 
-		private KeyboardState _keyboardState;
-		private KeyboardState _oldKeyboardState;
-		private MouseState _mouseState;
+		private KeyboardState keyboardState;
+		private KeyboardState oldKeyboardState;
+		private MouseState mouseState;
 
 		static public int WIDTH;
 		static public int HEIGHT;
+
 
 
 		public TarponGame ()
@@ -54,35 +57,33 @@ namespace TarponSimulator2017
 			HEIGHT = Window.ClientBounds.Height;
 			WIDTH = Window.ClientBounds.Width;
 
+			boat = new Boat ();
+			boat.Initialize ();
 			player = new Player ();
-			player.Initialize ();
-
-			tarpon = new Tarpon ();
-			tarpon.Initialize ();
+			player.Initialize (boat);
 
 			base.Initialize();
 		}
 			
 
 		protected override void LoadContent(){
-			_spriteBatch = new SpriteBatch(GraphicsDevice);
+			spriteBatch = new SpriteBatch(GraphicsDevice);
 
 			player.LoadContent (graphics.GraphicsDevice,"Content/chirac.png");
-			tarpon.LoadContent (graphics.GraphicsDevice, "Content/tarpon.png");
+
 			
 		}
 
 		protected override void Update(GameTime gameTime)
 		{
-			
+			keyboardState = Keyboard.GetState();
+			mouseState = Mouse.GetState ();
 
-			_keyboardState = Keyboard.GetState();
-			_mouseState = Mouse.GetState ();
-			player.HandleInput(_keyboardState,_mouseState);
+			boat.HandleInput(keyboardState, oldKeyboardState, mouseState);
 
-			_oldKeyboardState = _keyboardState;
+			oldKeyboardState = keyboardState;
 
-			tarpon.Update (gameTime);
+
 
 			base.Update(gameTime);
 		}
@@ -94,14 +95,14 @@ namespace TarponSimulator2017
 			base.Draw(gameTime);
 
 			// Start drawing
-			_spriteBatch.Begin();
+			spriteBatch.Begin();
 			// Draw the Player
-			tarpon.Draw (_spriteBatch, gameTime);
-			player.Draw(_spriteBatch, gameTime);
+
+			player.Draw(spriteBatch, gameTime);
 
 
 			// Stop drawing
-			_spriteBatch.End();
+			spriteBatch.End();
 		}
 
 		public Texture2D LoadPicture(string Filename)
