@@ -69,7 +69,7 @@ namespace TarponSimulator2017
 		protected override void LoadContent(){
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
-			player.LoadContent (graphics.GraphicsDevice,"Content/chirac.png");
+			player.LoadContent (graphics.GraphicsDevice,"Content/boat.png");
 
 			
 		}
@@ -79,7 +79,7 @@ namespace TarponSimulator2017
 			keyboardState = Keyboard.GetState();
 			mouseState = Mouse.GetState ();
 
-			boat.HandleInput(keyboardState, oldKeyboardState, mouseState);
+			boat.Update(gameTime,keyboardState, oldKeyboardState, mouseState);
 
 			oldKeyboardState = keyboardState;
 
