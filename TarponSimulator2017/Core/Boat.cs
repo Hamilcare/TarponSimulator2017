@@ -36,18 +36,13 @@ namespace Core
 			Speed = 0;
 			MaxSpeed = 0.1;
 			Friction = 0.98;
-
 		}
 
 		public void HandleInput(KeyboardState _keyboardState,KeyboardState _oldKeyboardState ,MouseState mouseState)
 		{
-
-
 			if (_keyboardState.IsKeyDown(Keys.Up))
 			{
-				
 				if (Speed < MaxSpeed) Speed+=0.01;
-
 			}
 			else if (_keyboardState.IsKeyDown(Keys.Down))
 			{
@@ -62,8 +57,6 @@ namespace Core
 			{
 				PositionRear = rotateVector(PositionFront,(float)(Math.PI*-1/180),PositionRear);
 			}
-
-
 		}
 
 		private double handleFriction(){
@@ -78,11 +71,9 @@ namespace Core
 			double xnew = Math.Cos(angle) * (target.X - axe.X) - Math.Sin(angle) *(target.Y-axe.Y) + axe.X;
 			double ynew = Math.Sin(angle) * (target.X-axe.X) + Math.Cos(angle)*(target.Y-axe.Y) + axe.Y;
 			return new Vector(xnew,ynew);
-
 		}
 
-			public void Update(GameTime gameTime,KeyboardState keyboardState,KeyboardState oldKeyboardState ,MouseState mouseState){
-			
+		public void Update(GameTime gameTime,KeyboardState keyboardState,KeyboardState oldKeyboardState ,MouseState mouseState){
 			//PositionFront = Vector.Add (PositionFront,Direction);
 			Direction = Vector.Subtract(PositionFront,PositionRear);
 			Direction.Normalize ();
@@ -90,13 +81,6 @@ namespace Core
 			PositionRear = Vector.Add (PositionRear, Direction*Speed);
 			Speed = handleFriction();
 			HandleInput (keyboardState, oldKeyboardState, mouseState);
-
-
 		}
-
-
-
-
-
 	}
 }
