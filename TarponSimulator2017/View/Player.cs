@@ -45,45 +45,14 @@ namespace TarponSimulator2017
 		}
 
 
-		public  void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
 		{
-			
-			float RotationAngle = (float)(((Vector.AngleBetween (Boat.Direction, new Vector (0.0, 1.0))) * Math.PI / 180.0)-Math.PI);
 
-			if (Boat.Direction.X >= 0)//Because AngleBetween give an answer between 0 and pi
-				RotationAngle*=-1;
+			//float RotationAngle = (float) Math.PI;
 
-			spriteBatch.Draw (Texture,
-				new Vector2 ((float)Boat.PositionFront.X + Texture.Width/2, (float)Boat.PositionFront.Y),
-				null,
-				null,
-				null,
-				RotationAngle,
-				null,
-				null);
-			
-//			printSpeed (spriteBatch);
-			Console.WriteLine(Boat.Direction);
-			Console.WriteLine (RotationAngle);
-			Console.WriteLine (Boat.Speed);
+			spriteBatch.Draw(Texture, Boat.MotorPosition, null, Color.AliceBlue, Boat.OrientiationFloat(), new Vector2(34, 0), 1, SpriteEffects.None, 0);
+			//spriteBatch.Draw(Texture, Boat.CentralPosition(), null, null, RotationAngle, null, null, null, 0);
 		}
-
-		private void printSpeed(SpriteBatch spriteBatch){
-			String speed = (Boat.Speed * 100).ToString ();
-			if (Boat.Speed > 0)
-				speed = speed.Substring (0, 2);
-
-
-			for (int i = 0; i < speed.Length; i++) {
-				char current = speed[i];
-				if ((int)Char.GetNumericValue(current) < 0)
-					current = '0';
-				Console.Write (current);
-				spriteBatch.Draw (Tab_chiffre [(int)Char.GetNumericValue(current)], new Vector2 ( i * 96.0f, 0.0f), Color.White);
-			}
-		}
-
-
 	}
 }
 

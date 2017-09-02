@@ -44,8 +44,9 @@ namespace TarponSimulator2017
 			Window.Position = new Microsoft.Xna.Framework.Point(0, 0);
 			Window.IsBorderless = false;
 
-			//graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-			//graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+			graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			graphics.IsFullScreen = true;
 			graphics.ApplyChanges();
 
 
@@ -58,7 +59,6 @@ namespace TarponSimulator2017
 			WIDTH = Window.ClientBounds.Width;
 
 			boat = new Boat ();
-			boat.Initialize ();
 			player = new Player ();
 			player.Initialize (boat);
 

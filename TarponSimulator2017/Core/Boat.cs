@@ -11,38 +11,44 @@ namespace Core
 {
 	public class Boat
 	{
-		public Boat ()
+		public float TurnAngleSpeed { get; private set; }
+		public float TurnAngle { get; private set; }
+		public Vector2 Orientation { get; private set; }
+		
+		public Vector2 Acceleration { get; private set; }
+		public Vector2 Speed { get; private set; }
+		public Vector2 MotorPosition { get; private set; }
+
+		public Vector2 CentralPosition { get; private set; }
+
+		public const float FrictionForce = 0.0015f;
+		public const float AccelerationForce = 0.001f;
+		public const float TurnSpeed = 0.0001f;
+		public const float MaxTurnAngle = 0.8f;
+
+		int elapsedTime; // in milliseconds
+
+		public Boat()
 		{
+			CentralPosition = new Vector2(200, 300);
+			MotorPosition = new Vector2(200, 363);
+			Orientation = new Vector2(0, -1);
 		}
 
-		public Vector PositionFront { get; private set; }
-
-		public Vector PositionRear { get; private set; }
-
-		public Vector Direction { get; private set; }
-
-		public double Speed { get; private set;}
-
-		public double MaxSpeed{ get; private set; }
-
-		public double Friction{ get; set; }//Could be changed by weather or ect...
-
-		public void Initialize()
+		public float OrientiationFloat()
 		{
-			PositionFront = new Vector(100,100);
-			PositionRear = new Vector (100, 150);
-			Direction = Vector.Subtract(PositionFront,PositionRear);
-			Direction.Normalize ();
-			Speed = 0;
-			MaxSpeed = 0.1;
-			Friction = 0.98;
+			return (float)Math.Atan2(Orientation.X, -Orientation.Y);
 		}
 
 		public void HandleInput(KeyboardState _keyboardState,KeyboardState _oldKeyboardState ,MouseState mouseState)
 		{
+			// Init
+			Acceleration = new Vector2(0, 0);
+			TurnAngleSpeed = 0f;
+
 			if (_keyboardState.IsKeyDown(Keys.Up))
 			{
-				if (Speed < MaxSpeed) Speed+=0.01;
+				Acceleration = Orientation * AccelerationForce;
 			}
 			else if (_keyboardState.IsKeyDown(Keys.Down))
 			{
@@ -51,36 +57,58 @@ namespace Core
 
 			if (_keyboardState.IsKeyDown(Keys.Right))
 			{
-				PositionRear = rotateVector(PositionFront,(float)(Math.PI*1/180),PositionRear);
+				TurnAngleSpeed = TurnSpeed;
 			}
 			else if (_keyboardState.IsKeyDown(Keys.Left))
 			{
-				PositionRear = rotateVector(PositionFront,(float)(Math.PI*-1/180),PositionRear);
+				TurnAngleSpeed = -TurnSpeed;
 			}
 		}
 
-		private double handleFriction(){
-			double newSpeed = Speed * Friction;
-			if (newSpeed<0.00001)
-				newSpeed = 0.0;
-			return newSpeed;
-		}
+		private void ComputeMovement(GameTime gameTime)
+		{
+			int now = gameTime.ElapsedGameTime.Milliseconds;
+			int interval = now - elapsedTime;
+			elapsedTime = now;
 
-		//Rotate target Vector around axe by angle in radians
-		private Vector rotateVector(Vector axe, float angle, Vector target){
-			double xnew = Math.Cos(angle) * (target.X - axe.X) - Math.Sin(angle) *(target.Y-axe.Y) + axe.X;
-			double ynew = Math.Sin(angle) * (target.X-axe.X) + Math.Cos(angle)*(target.Y-axe.Y) + axe.Y;
-			return new Vector(xnew,ynew);
+			// Friction
+			Acceleration += -Speed * FrictionForce;
+
+			// Compute TurnAngle
+			if (Math.Abs(TurnAngleSpeed) < float.Epsilon && Math.Abs(TurnAngle) > float.Epsilon)
+			{
+				int sign = TurnAngle > 0 ? 1 : -1;
+				TurnAngle -= elapsedTime * sign * TurnSpeed;
+				int newSign = TurnAngle > 0 ? 1 : -1;
+				TurnAngle = sign == newSign ? TurnAngle : 0f; // We don't want to flip between left and right
+			}
+			else
+			{
+				TurnAngle += elapsedTime * TurnAngleSpeed;
+			}
+
+			// Apply limitations to turn angle
+			TurnAngle = Math.Max(Math.Min(TurnAngle, MaxTurnAngle), -MaxTurnAngle);
+
+			// Update old speed according to turn angles 
+			Speed = Vector2.Transform(Speed, Matrix.CreateRotationZ(TurnAngle));
+
+			// Add the new acceleration to the speed
+			Speed += Acceleration* elapsedTime;
+
+			// Add the new speed to the position
+			MotorPosition += Speed * elapsedTime;
+
+			// Update orientation
+			Vector2 newOrientiation = Vector2.Normalize(Speed);
+			if (!float.IsNaN(newOrientiation.X) && !float.IsNaN(newOrientiation.Y)) Orientation = newOrientiation;
+
+			//Matrix.CreateFromAxisAngle();
 		}
 
 		public void Update(GameTime gameTime,KeyboardState keyboardState,KeyboardState oldKeyboardState ,MouseState mouseState){
-			//PositionFront = Vector.Add (PositionFront,Direction);
-			Direction = Vector.Subtract(PositionFront,PositionRear);
-			Direction.Normalize ();
-			PositionFront = Vector.Add (PositionFront, Direction*Speed);
-			PositionRear = Vector.Add (PositionRear, Direction*Speed);
-			Speed = handleFriction();
 			HandleInput (keyboardState, oldKeyboardState, mouseState);
+			ComputeMovement(gameTime);
 		}
 	}
 }
