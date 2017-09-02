@@ -17,10 +17,10 @@ namespace Tarpon.Core
 
 		public Vector2 CentralPosition { get; private set; }
 
-		public const float FrictionForce = 0.0015f;
-		public const float AccelerationForce = 0.001f;
+		public const float FrictionForce = 0.0010f;
+		public const float AccelerationForce = 0.0005f;
 		public const float TurnSpeed = 0.0001f;
-		public const float MaxTurnAngle = 0.8f;
+		public const float MaxTurnAngle = 0.02f;
 
 		int elapsedTime; // in milliseconds
 
@@ -89,8 +89,8 @@ namespace Tarpon.Core
 			MotorPosition += Speed * elapsedTime;
 
 			// Update orientation
-			Vector2 newOrientiation = Vector2.Normalize(Speed);
-			if (!float.IsNaN(newOrientiation.X) && !float.IsNaN(newOrientiation.Y)) Orientation = newOrientiation;
+			Vector2 newOrientation = Vector2.Normalize(Speed);
+			if (!float.IsNaN(newOrientation.X) && !float.IsNaN(newOrientation.Y)) Orientation = newOrientation;
 
 			//Matrix.CreateFromAxisAngle();
 		}
