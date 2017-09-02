@@ -4,3 +4,4 @@ packages/
 tutoQuentin/
 .batard
 *.userprefs
+/packages/
