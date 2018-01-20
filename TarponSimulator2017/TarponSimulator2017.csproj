@@ -50,6 +50,9 @@
     <Reference Include="System.Windows" />
     <Reference Include="System.Drawing" />
     <Reference Include="WindowsBase" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TarponGame.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="Draw\Utils\PictureLoader.cs" />
     <Compile Include="Core\World.cs" />
     <Compile Include="Core\IUpdatable.cs" />
+    <Compile Include="Tests\BoatTest.cs" />
     <Compile Include="Core\Boat.cs" />
     <Compile Include="Core\WorldBuilder.cs" />
     <Compile Include="Core\Fish.cs" />
@@ -74,5 +78,6 @@
     <Folder Include="Draw\" />
     <Folder Include="Controller\" />
     <Folder Include="Draw\Utils\" />
+    <Folder Include="Tests\" />
   </ItemGroup>
 </Project>
