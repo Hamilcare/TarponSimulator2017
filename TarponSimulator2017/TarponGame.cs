@@ -51,15 +51,15 @@ namespace Tarpon
 			toDraw = new List<IDrawer>();
 			toControl = new List<IController>();
 
-			world = WorldBuilder.CreateSimpleWorld(1);
+			//world = WorldBuilder.CreateSimpleWorld(1);
 
 			// Extraction of elements to draw should be done in the "Draw" folder
 			// Note that the order in the list is important => items at the beginning will be drawn fist
-			toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
+			//toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
 
 			// Same thing for toControl with the "Controller" folder
-			toControl.Add(new WorldController(world));
-			toControl.Add(new BoatController(world.Boats[0]));
+			//toControl.Add(new WorldController(world));
+			//toControl.Add(new BoatController(world.Boats[0]));
 
 			base.Initialize();
 		}

@@ -7,6 +7,9 @@ namespace Tarpon.Core
 		public Fish ()
 		{
 		}
+
+		public void Update(int now){
+		}
 	}
 }
 
