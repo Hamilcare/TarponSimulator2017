@@ -24,7 +24,8 @@ namespace Tarpon
 
 		World world;
 		List<IDrawer> toDraw;
-		List<IController> toControl;
+		IController toControl;
+		Scene scene;
 
 		static public int WIDTH;
 		static public int HEIGHT;
@@ -48,18 +49,15 @@ namespace Tarpon
 			HEIGHT = Window.ClientBounds.Height;
 			WIDTH = Window.ClientBounds.Width;
 
+			scene = SceneInGame.Instance;
 			toDraw = new List<IDrawer>();
-			toControl = new List<IController>();
+			toControl = new MasterController(world, scene);
 
 			world = WorldBuilder.CreateSimpleWorld(1);
 
 			// Extraction of elements to draw should be done in the "Draw" folder
 			// Note that the order in the list is important => items at the beginning will be drawn fist
 			toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
-
-			// Same thing for toControl with the "Controller" folder
-			toControl.Add(new WorldController(world));
-			toControl.Add(new BoatController(world.Boats[0]));
 
 			base.Initialize();
 		}
@@ -75,7 +73,7 @@ namespace Tarpon
 			keyboardState = Keyboard.GetState();
 			mouseState = Mouse.GetState ();
 
-			toControl.ForEach(tc => tc.Update(gameTime, keyboardState, oldKeyboardState, mouseState));
+			toControl.Update(gameTime, keyboardState, oldKeyboardState, mouseState);
 
 			oldKeyboardState = keyboardState;
 			base.Update(gameTime);

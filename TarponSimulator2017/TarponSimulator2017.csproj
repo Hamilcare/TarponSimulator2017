@@ -54,15 +54,21 @@
   <ItemGroup>
     <Compile Include="TarponGame.cs" />
     <Compile Include="Draw\BoatDrawer.cs" />
-    <Compile Include="Controller\BoatController.cs" />
     <Compile Include="Controller\IController.cs" />
-    <Compile Include="Controller\WorldController.cs" />
     <Compile Include="Draw\IDrawer.cs" />
     <Compile Include="Draw\Utils\PictureLoader.cs" />
     <Compile Include="Core\Elements\Boat.cs" />
     <Compile Include="Core\Builders\WorldBuilder.cs" />
     <Compile Include="Core\World.cs" />
     <Compile Include="Core\IUpdatable.cs" />
+    <Compile Include="Controller\Scene.cs" />
+    <Compile Include="Controller\Command.cs" />
+    <Compile Include="Controller\CommandAccelerate.cs" />
+    <Compile Include="Controller\CommandTurn.cs" />
+    <Compile Include="Controller\CommandBrake.cs" />
+    <Compile Include="Controller\SceneInGame.cs" />
+    <Compile Include="Controller\SceneMenu.cs" />
+    <Compile Include="Controller\MasterController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
