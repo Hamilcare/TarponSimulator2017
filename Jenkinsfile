@@ -20,6 +20,10 @@ node {
       sh 'cp /opt/sdl2-win32/SDL2.dll ./TarponSim2017/'
       sh 'zip -r TarponSimulator2017.zip TarponSim2017'
       archiveArtifacts artifacts: 'TarponSimulator2017.zip'
+
+      withEnv(["HOME=${ pwd() }"]) {
+        sh 'nunit-console26 ./TarponSimulator2017/bin/Release/TarponSimulator2017.exe'
+      }
     }
   }
 }
