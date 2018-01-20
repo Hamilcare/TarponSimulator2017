@@ -15,7 +15,7 @@ namespace Tarpon.Controller
 
 		public void Update(GameTime gameTime, KeyboardState _keyboardState, KeyboardState _oldKeyboardState, MouseState mouseState)
 		{
-			world.Update(gameTime.ElapsedGameTime.Milliseconds);
+			//world.Update(gameTime.ElapsedGameTime.Milliseconds);
 		}
 	}
 }
