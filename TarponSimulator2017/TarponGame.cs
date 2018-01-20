@@ -1,54 +1,45 @@
-﻿using System;
-using System.IO;
+﻿using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
+//using Microsoft.Xna.Framework.Media;
+//using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 
+using Tarpon.Core;
+using Tarpon.Draw;
+using Tarpon.Controller;
+using System.Linq;
 
-
-using TarponSimulator2017;
-
-using Core;
-
-namespace TarponSimulator2017
+namespace Tarpon
 {
-	public class TarponGame : Microsoft.Xna.Framework.Game
+	public class TarponGame : Game
 	{
-		GraphicsDeviceManager graphics;
-
 		public SpriteBatch spriteBatch { get; private set; }
 
-		private Player player;
-		private Boat boat;
+		GraphicsDeviceManager graphics;
+		KeyboardState keyboardState;
+		KeyboardState oldKeyboardState;
+		MouseState mouseState;
 
-		private KeyboardState keyboardState;
-		private KeyboardState oldKeyboardState;
-		private MouseState mouseState;
+		World world;
+		List<IDrawer> toDraw;
+		List<IController> toControl;
 
 		static public int WIDTH;
 		static public int HEIGHT;
 
-
-
 		public TarponGame ()
 		{
-			graphics = new GraphicsDeviceManager(this);
-
-			//Content.RootDirectory = "Content";
-			graphics.IsFullScreen = false;
-			//Window.AllowUserResizing = true;
 			Window.Title = "TARPON";
-			Window.Position = new Microsoft.Xna.Framework.Point(0, 0);
+			Window.Position = new Point(0, 0);
 			Window.IsBorderless = false;
 
-			//graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-			//graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			graphics = new GraphicsDeviceManager(this);
+			graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+			graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+			graphics.IsFullScreen = true;
 			graphics.ApplyChanges();
-
-
 		}
 
 
@@ -57,10 +48,18 @@ namespace TarponSimulator2017
 			HEIGHT = Window.ClientBounds.Height;
 			WIDTH = Window.ClientBounds.Width;
 
-			boat = new Boat ();
-			boat.Initialize ();
-			player = new Player ();
-			player.Initialize (boat);
+			toDraw = new List<IDrawer>();
+			toControl = new List<IController>();
+
+			world = WorldBuilder.CreateSimpleWorld(1);
+
+			// Extraction of elements to draw should be done in the "Draw" folder
+			// Note that the order in the list is important => items at the beginning will be drawn fist
+			toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
+
+			// Same thing for toControl with the "Controller" folder
+			toControl.Add(new WorldController(world));
+			toControl.Add(new BoatController(world.Boats[0]));
 
 			base.Initialize();
 		}
@@ -68,10 +67,7 @@ namespace TarponSimulator2017
 
 		protected override void LoadContent(){
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-
-			player.LoadContent (graphics.GraphicsDevice,"Content/chirac.png");
-
-			
+			toDraw.ForEach(td => td.LoadContent(graphics.GraphicsDevice));
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -79,41 +75,27 @@ namespace TarponSimulator2017
 			keyboardState = Keyboard.GetState();
 			mouseState = Mouse.GetState ();
 
-			boat.HandleInput(keyboardState, oldKeyboardState, mouseState);
+			toControl.ForEach(tc => tc.Update(gameTime, keyboardState, oldKeyboardState, mouseState));
 
 			oldKeyboardState = keyboardState;
-
-
-
 			base.Update(gameTime);
 		}
 
 
 
 		protected override void Draw(GameTime gameTime) {
-			graphics.GraphicsDevice.Clear(Color.DarkGray);
+			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 			base.Draw(gameTime);
 
 			// Start drawing
 			spriteBatch.Begin();
-			// Draw the Player
 
-			player.Draw(spriteBatch, gameTime);
-
+			//Draw elements
+			toDraw.ForEach(td => td.Draw(spriteBatch, gameTime));
 
 			// Stop drawing
 			spriteBatch.End();
 		}
-
-		public Texture2D LoadPicture(string Filename)
-		{
-			FileStream setStream = File.Open(Filename, FileMode.Open);
-			//StreamReader reader = new StreamReader(setStream);
-			Texture2D NewTexture = Texture2D.FromStream(graphics.GraphicsDevice, setStream);
-			setStream.Dispose();
-			return NewTexture;
-		}
-
 
 		public static void Main() {
 			var game = new TarponGame ();

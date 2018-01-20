@@ -39,34 +39,7 @@
     <None Include="Content\tarpon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Content\0.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\1.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\2.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\3.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\4.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\5.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\6.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\7.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\8.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\9.png">
+    <None Include="Content\boat.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -80,13 +53,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TarponGame.cs" />
-    <Compile Include="Core\Boat.cs" />
-    <Compile Include="View\Player.cs" />
-    <Compile Include="View\Sprite.cs" />
+    <Compile Include="Draw\BoatDrawer.cs" />
+    <Compile Include="Controller\BoatController.cs" />
+    <Compile Include="Controller\IController.cs" />
+    <Compile Include="Controller\WorldController.cs" />
+    <Compile Include="Draw\IDrawer.cs" />
+    <Compile Include="Draw\Utils\PictureLoader.cs" />
+    <Compile Include="Core\Elements\Boat.cs" />
+    <Compile Include="Core\Builders\WorldBuilder.cs" />
+    <Compile Include="Core\World.cs" />
+    <Compile Include="Core\IUpdatable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Core\" />
-    <Folder Include="View\" />
+    <Folder Include="Draw\" />
+    <Folder Include="Controller\" />
+    <Folder Include="Draw\Utils\" />
+    <Folder Include="Core\Builders\" />
+    <Folder Include="Core\Elements\" />
   </ItemGroup>
 </Project>
