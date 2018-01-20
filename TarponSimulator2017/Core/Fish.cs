@@ -2,7 +2,7 @@
 
 namespace Tarpon.Core
 {
-	public class Fish : IUpdatable
+	public class Fish : IUpdatable, Physics
 	{
 		public Fish ()
 		{

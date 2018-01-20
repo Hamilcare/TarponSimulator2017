@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Tarpon.Core
 {
-	public class Boat : IUpdatable
+	public class Boat : Physics, IUpdatable
 	{
 		public enum Direction { Left = -1, Right = 1 }
 
