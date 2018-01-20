@@ -25,6 +25,16 @@ batard pull
 batard push
 ```
 
+### Install a working nuget
+
+You must download certificates:
+
+```
+sudo cert-sync /etc/pki/tls/certs/ca-bundle.crt
+```
+
+*Otherwise you'll have the following error: `WARNING: Error: TrustFailure (Ssl error:1000007d:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED)`*
+
 ### Install Monogame Pipeline Tool
 
 You need these dependencies:
