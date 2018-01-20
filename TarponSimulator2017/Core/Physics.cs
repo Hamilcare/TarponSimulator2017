@@ -73,7 +73,7 @@ namespace Tarpon.Core
 			TurnAngleSpeed = (int)d * TurnSpeed;
 		}
 
-		protected void ComputeMovement(int now)
+		public void ComputeMovement(int now)
 		{
 				
 			elapsedTime = now;
