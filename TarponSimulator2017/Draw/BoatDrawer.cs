@@ -24,7 +24,7 @@ namespace Tarpon.Draw
 		{
 			spriteBatch.Draw(
 				Texture,						// Texture of the boat 
-				CoreBoat.MotorPosition, 		// Position 
+				CoreBoat.ApplicationPoint, 		// Position 
 				null, 
 				Color.White, 
 				CoreBoat.OrientiationFloat(), 
