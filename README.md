@@ -46,5 +46,6 @@ git2 status
 monogame-pipeline-tool
 ```
 
-If you have a problem, especially if our dependencies changed, please refer to the `Dockerfile` and the `Jenkinsfile` where the automated build of the project is described.
+Our automated build id described in the `Dockerfile` and the `Jenkinsfile`.
+You can inspect them if you have a problem with the previous commands.
 
