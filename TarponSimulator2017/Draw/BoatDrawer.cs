@@ -8,6 +8,7 @@ namespace Tarpon.Draw
 	{
 		Core.Boat CoreBoat;
 		Texture2D Texture;
+		Rectangle TextureRegion;
 
 		public BoatDrawer(Core.Boat boat)
 		{
@@ -16,7 +17,12 @@ namespace Tarpon.Draw
 
 		public void LoadContent(ContentManager content)
 		{
-			Texture = content.Load<Texture2D> ("Content/Sprites/boat");
+			/*
+			 * @FIXME: The spritesheet should be loaded in an external class
+			 * Indeed, we'll use it for many other things
+			 */
+			Texture = content.Load<Texture2D> ("Content/img/spritesheet");
+			TextureRegion = new Rectangle (204, 115, 66, 113);
 		}
 
 		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -24,13 +30,13 @@ namespace Tarpon.Draw
 			spriteBatch.Draw(
 				Texture,						// Texture of the boat 
 				CoreBoat.ApplicationPoint, 		// Position 
-				null, 
+				TextureRegion, 
 				Color.White, 
 				CoreBoat.OrientiationFloat(), 
-				new Vector2(34, 0), 
+				new Vector2(33, 0), 
 				1, 
 				SpriteEffects.None, 
-				0);
+				0); 
 		}
 	}
 }

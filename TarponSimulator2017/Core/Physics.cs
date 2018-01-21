@@ -59,14 +59,11 @@ namespace Tarpon.Core
 			ApplicationPoint = new Vector2 (AbscisseDepart, OrdonneeDepart);
 
 			Orientation = new Vector2 (0, -1);
-
-
-
 		}
 
 		public float OrientiationFloat ()
 		{
-			return (float)Math.Atan2 (Orientation.X, -Orientation.Y);
+			return (float) (Math.Atan2 (Orientation.X, -Orientation.Y) + Math.PI);
 		}
 
 		public void Accelerate ()

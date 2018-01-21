@@ -7,7 +7,7 @@
  1. Install dependencies
    * On Linux, you must install SDL2 and mono. On Fedora: `dnf install mono SDL2 SDL2-devel`
    * On macOS, you must install SDL2 and mono, we don't know how.
-   * on Windows, you have nothing to do.
+   * On Windows, you have nothing to do.
  2. [Download Tarpon Simulator 2017 binaries (Windows and Linux)](https://ci.deuxfleurs.fr/job/TarponSimulator2017/job/master/lastSuccessfulBuild/artifact/TarponSimulator2017.zip)
  3. Unzip it and launch it
    * On Windows, just double click on `TarponSimulator2017.exe`
@@ -52,3 +52,6 @@ monodevelop
 Our automated build id described in the `Dockerfile` and the `Jenkinsfile`.
 You can inspect them if you have a problem with the previous commands.
 
+## Credits
+
+ * [Pirate Pack](https://kenney.nl/assets/pirate-pack) under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) by [Kenney.nl](https://kenney.nl/)
