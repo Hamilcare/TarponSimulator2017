@@ -12,9 +12,11 @@ namespace Tarpon.Core
 
 		}
 
-		public void UpdateUpdatables()
+		public void Update(int now)
 		{
 			
 		}
+
+
 	}
 }
