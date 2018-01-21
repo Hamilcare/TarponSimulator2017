@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace Tarpon.Draw
 {
@@ -7,17 +8,15 @@ namespace Tarpon.Draw
 	{
 		Core.Boat CoreBoat;
 		Texture2D Texture;
-		string filename;
 
 		public BoatDrawer(Core.Boat boat)
 		{
 			CoreBoat = boat;
-			this.filename = "Content/boat.png";
 		}
 
-		public void LoadContent(GraphicsDevice graphics)
+		public void LoadContent(ContentManager content)
 		{
-			Texture = Utils.PictureLoader.LoadPicture(graphics, filename);
+			Texture = content.Load<Texture2D> ("Content/Sprites/boat");
 		}
 
 		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -35,4 +34,5 @@ namespace Tarpon.Draw
 		}
 	}
 }
+
 

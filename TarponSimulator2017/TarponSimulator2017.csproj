@@ -19,6 +19,11 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="BeforeBuild" command="mgcb -@:Resources.mgcb -outputDir:bin/Debug" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>full</DebugType>
@@ -28,20 +33,17 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <PlatformTarget>x86</PlatformTarget>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="BeforeBuild" command="mgcb -@:Resources.mgcb -outputDir:bin/Release" workingdir="${ProjectDir}" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="MonoGame.Framework.dll.config" />
     <None Include="packages.config" />
-    <None Include="Content\chirac.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\tarpon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\boat.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Resources.mgcb" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -59,7 +61,6 @@
     <Compile Include="Draw\BoatDrawer.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Draw\IDrawer.cs" />
-    <Compile Include="Draw\Utils\PictureLoader.cs" />
     <Compile Include="Core\World.cs" />
     <Compile Include="Core\IUpdatable.cs" />
     <Compile Include="Controller\Scene.cs" />
@@ -80,11 +81,9 @@
     <Compile Include="Utils\Direction.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
     <Folder Include="Core\" />
     <Folder Include="Draw\" />
     <Folder Include="Controller\" />
-    <Folder Include="Draw\Utils\" />
     <Folder Include="Tests\" />
     <Folder Include="Utils\" />
   </ItemGroup>
