@@ -61,6 +61,7 @@ namespace Tarpon
 			// Extraction of elements to draw should be done in the "Draw" folder
 			// Note that the order in the list is important => items at the beginning will be drawn fist
 			//toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
+			toDraw.Add(new BoatDrawer(world.playerBoat));
 			//toDraw.Add(new BoatDrawer(world.playerBoat));
 
 			// Same thing for toControl with the "Controller" folder
@@ -73,7 +74,7 @@ namespace Tarpon
 
 		protected override void LoadContent(){
 			spriteBatch = new SpriteBatch(GraphicsDevice);
-			toDraw.ForEach(td => td.LoadContent(graphics.GraphicsDevice));
+			toDraw.ForEach(td => td.LoadContent(Content));
 		}
 
 		protected override void Update(GameTime gameTime)
