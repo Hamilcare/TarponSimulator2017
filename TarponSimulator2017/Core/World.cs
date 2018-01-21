@@ -9,12 +9,14 @@ namespace Tarpon.Core
 
 		public World()
 		{
-
+			playerBoat = new Boat (200, 300);
+			toUpdate = new List<IUpdatable>();
+			toUpdate.Add (playerBoat);
 		}
 
 		public void Update(int now)
 		{
-			
+			toUpdate.ForEach(tu => tu.Update(now));
 		}
 
 

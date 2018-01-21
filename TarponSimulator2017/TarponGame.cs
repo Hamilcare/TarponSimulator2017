@@ -39,7 +39,7 @@ namespace Tarpon
 			graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
 			graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-			graphics.IsFullScreen = true;
+			graphics.IsFullScreen = false;
 			graphics.ApplyChanges();
 		}
 
@@ -51,21 +51,15 @@ namespace Tarpon
 
 			World world = new World (); 
 
-			scene = SceneInGame.Instance;
-		
+			//Deso Lucie, j'ai mis un bye a ton singleton, je sais pas comment ça marche ptdr
+			scene = new SceneInGame(world);
+			
 			toDraw = new List<IDrawer>();
 			toControl = new MasterController(world, scene);
 
-			//world = WorldBuilder.CreateSimpleWorld(1);
 
-			// Extraction of elements to draw should be done in the "Draw" folder
-			// Note that the order in the list is important => items at the beginning will be drawn fist
-			//toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
-			//toDraw.Add(new BoatDrawer(world.playerBoat));
+			toDraw.Add(new BoatDrawer(world.playerBoat));
 
-			// Same thing for toControl with the "Controller" folder
-			//toControl.Add(new WorldController(world));
-			//toControl.Add(new BoatController(world.Boats[0]));
 
 			base.Initialize();
 		}
