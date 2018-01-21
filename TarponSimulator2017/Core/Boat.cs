@@ -12,7 +12,7 @@ namespace Tarpon.Core
 		public  const float MaxTurnAngleBoat = 0.02f;
 
 
-		public Boat(int AbscisseDepart, int OrdonneeDepart) : base (FrictionForceBoat, AccelerationForceBoat, TurnSpeedBoat, MaxTurnAngleBoat, AbscisseDepart, OrdonneeDepart)
+		public Boat(int StartAbscisse, int StartOrdinate) : base (FrictionForceBoat, AccelerationForceBoat, TurnSpeedBoat, MaxTurnAngleBoat, StartAbscisse, StartOrdinate)
 		{
 			
 
