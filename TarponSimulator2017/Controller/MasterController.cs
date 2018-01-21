@@ -23,24 +23,7 @@ namespace Tarpon.Controller
 
 		public void Update(GameTime gameTime, KeyboardState _keyboardState, KeyboardState _oldKeyboardState, MouseState mouseState)
 		{
-			world.Update(gameTime.ElapsedGameTime.Milliseconds);
-			if (_keyboardState.IsKeyDown(Keys.Up))
-			{
-				//call command CommandAccelerate
-			}
-			else if (_keyboardState.IsKeyDown(Keys.Down))
-			{
-				//call command CommandBrake
-			}
-
-			if (_keyboardState.IsKeyDown(Keys.Right))
-			{
-				//call command CommandTurn
-			}
-			else if (_keyboardState.IsKeyDown(Keys.Left))
-			{
-				//call command CommandTurn
-			}
+			scene.SceneInputs (gameTime, _keyboardState, _oldKeyboardState, mouseState);
 		}
 	}
 }
