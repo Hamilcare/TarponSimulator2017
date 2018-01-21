@@ -16,11 +16,6 @@ namespace Tarpon.Core
 
 		public void Update(int now)
 		{
-			
-		}
-
-		public void Update(int now)		
-		{		
 			toUpdate.ForEach(tu => tu.Update(now));
 		}
 

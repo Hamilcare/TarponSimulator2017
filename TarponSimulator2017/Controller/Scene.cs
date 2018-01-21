@@ -24,6 +24,8 @@ namespace Tarpon.Controller
 			actions.Keys
 				.Where (currentKey => _keyboardState.IsKeyDown (currentKey))
 				.ToList().ForEach (currentKey => actions [currentKey].execute ());
+
+			world.Update (gameTime.ElapsedGameTime.Milliseconds);
 		}
 
 	}

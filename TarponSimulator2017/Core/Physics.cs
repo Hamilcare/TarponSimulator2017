@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Tarpon.Utils;
 
 namespace Tarpon.Core
 {
 
 	public class Physics
 	{
-		public enum Direction { Left = -1, Right = 1 }
+		
 
 		public float FrictionForce{ get; private set; }
 		public float AccelerationForce{ get; private set; }
@@ -66,20 +67,27 @@ namespace Tarpon.Core
 		public void Accelerate()
 		{
 			Acceleration = Orientation * AccelerationForce;
+			Console.WriteLine ("Accelerate triggered");
 		}
 
-		public void Turn(Direction d)
+		public void Turn(Utils.Direction d)
 		{
 			TurnAngleSpeed = (int)d * TurnSpeed;
+			Console.WriteLine ("Turn triggered");
 		}
 
 		public void ComputeMovement(int now)
 		{
-				
+			Console.WriteLine ("ComputeMovement triggered");	
 			elapsedTime = now;
 
 			// Friction
 			Acceleration += -Speed * FrictionForce;
+
+			/*Consequently the rotation speed of the boat
+			 * depends of its speed */
+			TurnSpeed = (Math.Abs (Speed.X) + Math.Abs (Speed.Y));
+
 
 			// Compute TurnAngle
 			if (Math.Abs(TurnAngleSpeed) < float.Epsilon && Math.Abs(TurnAngle) > float.Epsilon)
@@ -91,8 +99,9 @@ namespace Tarpon.Core
 			}
 			else
 			{
-				TurnAngle += elapsedTime * TurnAngleSpeed;
+				TurnAngle = elapsedTime * TurnAngleSpeed * TurnSpeed;
 			}
+
 
 			// Apply limitations to turn angle
 			TurnAngle = Math.Max(Math.Min(TurnAngle, MaxTurnAngle), -MaxTurnAngle);
@@ -106,9 +115,19 @@ namespace Tarpon.Core
 			// Add the new speed to the position
 			ApplicationPoint += Speed * elapsedTime;
 
+
+
+			//Set Speed to zero under a certain limit
+			if(Math.Abs(Speed.X) < 0.000001f) Speed = new Vector2(0,Speed.Y);
+			if(Math.Abs(Speed.Y) < 0.000001f) Speed = new Vector2(Speed.X,0);
+				
+
 			// Update orientation
 			Vector2 newOrientation = Vector2.Normalize(Speed);
-			if (!float.IsNaN(newOrientation.X) && !float.IsNaN(newOrientation.Y)) Orientation = newOrientation;
+			if (!float.IsNaN (newOrientation.X) && !float.IsNaN (newOrientation.Y)) {
+				Orientation = newOrientation;
+
+			}
 	
 			//Must be reset at the end of computation
 			Acceleration = new Vector2(0, 0);
