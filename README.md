@@ -13,7 +13,7 @@
    * On Windows, just double click on `TarponSimulator2017.exe`
    * On Linux and macOS, run `mono TarponSimulator2017.exe`
 
-*I don't know yet why SDL2-devel is also required on Fedora*
+*I don't know yet why SDL2-devel is required on Fedora*
 
 ## Hack it!
 
@@ -21,15 +21,15 @@ We are developing the game under Fedora (and the following instructions are for 
 
 ```bash
 # Install dependencies
-dnf install -y monodevelop zip SDL2 SDL2-devel nuget ca-certificates nunit2 gtk-sharp3 gtk-sharp3-devel
+sudo dnf install -y monodevelop zip SDL2 SDL2-devel nuget ca-certificates nunit2 gtk-sharp3 gtk-sharp3-devel
 
 # Install certificates for nuget
-cert-sync /etc/pki/tls/certs/ca-bundle.crt
+sudo cert-sync /etc/pki/tls/certs/ca-bundle.crt
 
 # Install monogame
-curl http://www.monogame.net/releases/v3.6/monogame-sdk.run -o /opt/monogame-sdk.run \
-    && chmod +x /opt/monogame-sdk.run \
-    && /opt/monogame-sdk.run
+curl http://www.monogame.net/releases/v3.6/monogame-sdk.run -o ./monogame-sdk.run
+chmod +x monogame-sdk.run
+sudo ./monogame-sdk.run
 
 # Clone the project
 git clone https://github.com/Hamilcare/TarponSimulator2017.git
@@ -44,6 +44,9 @@ git2 status
 
 # Edit resources
 monogame-pipeline-tool
+
+# Launch editor
+monodevelop
 ```
 
 Our automated build id described in the `Dockerfile` and the `Jenkinsfile`.
