@@ -2,59 +2,49 @@
 
 [![Build Status](https://ci.deuxfleurs.fr/job/TarponSimulator2017/job/master/badge/icon)](https://ci.deuxfleurs.fr/job/TarponSimulator2017/job/master/)
 
-## Download
+## Play it!
 
-[Download Tarpon Simulator 2017 binaries (Windows and Linux)](https://ci.deuxfleurs.fr/job/TarponSimulator2017/job/master/lastSuccessfulBuild/artifact/TarponSimulator2017.zip)
+ 1. Install dependencies
+   * On Linux, you must install SDL2 and mono. On Fedora: `dnf install mono SDL2 SDL2-devel`
+   * On macOS, you must install SDL2 and mono, we don't know how.
+   * on Windows, you have nothing to do.
+ 2. [Download Tarpon Simulator 2017 binaries (Windows and Linux)](https://ci.deuxfleurs.fr/job/TarponSimulator2017/job/master/lastSuccessfulBuild/artifact/TarponSimulator2017.zip)
+ 3. Unzip it and launch it
+   * On Windows, just double click on `TarponSimulator2017.exe`
+   * On Linux and macOS, run `mono TarponSimulator2017.exe`
 
-## Known issue
+*I don't know yet why SDL2-devel is also required on Fedora*
 
+## Hack it!
 
-### Monodevelop crashes if it finds a .git folder
-
-One possible fix is to rename your `.git` folder in a `.batard` folder and use the `--git-dir=` for each git commands.
-
-An example using the alias command :
+We are developing the game under Fedora (and the following instructions are for Fedora), but it is theorically possible to develop it from macOS or Windows.
 
 ```bash
-mv .git .batard
-alias batard="git --git-dir=.batard"
-batard status
-batard log
-batard commit -a -m "blablab"
-batard pull
-batard push
-```
+# Install dependencies
+dnf install -y monodevelop zip SDL2 SDL2-devel nuget ca-certificates nunit2 gtk-sharp3 gtk-sharp3-devel
 
-### Install a working nuget
+# Install certificates for nuget
+cert-sync /etc/pki/tls/certs/ca-bundle.crt
 
-You must download certificates:
+# Install monogame
+curl http://www.monogame.net/releases/v3.6/monogame-sdk.run -o /opt/monogame-sdk.run \
+    && chmod +x /opt/monogame-sdk.run \
+    && /opt/monogame-sdk.run
 
-```
-sudo cert-sync /etc/pki/tls/certs/ca-bundle.crt
-```
+# Clone the project
+git clone https://github.com/Hamilcare/TarponSimulator2017.git
+cd TarponSimulator2017
 
-*Otherwise you'll have the following error: `WARNING: Error: TrustFailure (Ssl error:1000007d:SSL routines:OPENSSL_internal:CERTIFICATE_VERIFY_FAILED)`*
+# Our version of monodevelop crashes if it find a .git folder
+# We will rename .git to .git2 and use an alias, git2, to use git from command line
+mv .git .git2
+echo 'alias git2="git --git-dir=.git2"' >> ~/.bashrc
+source ~/.bashrc
+git2 status
 
-### Install Monogame Pipeline Tool
-
-You need these dependencies:
-
-```
-sudo dnf install gtk-sharp3 gtk-sharp3-devel
-```
-
-Now download and install the SDK:
-
-```
-wget http://www.monogame.net/releases/v3.6/monogame-sdk.run
-chmod +x ./monogame-sdk.run
-sudo ./monogame-sdk.run
-```
-
-And run it:
-
-```
+# Edit resources
 monogame-pipeline-tool
 ```
 
-Tadaaaa....
+If you have a problem, especially if our dependencies changed, please refer to the `Dockerfile` and the `Jenkinsfile` where the automated build of the project is described.
+

@@ -72,7 +72,6 @@ namespace Tarpon.Core
 		public void Accelerate ()
 		{
 			Acceleration = Orientation * AccelerationForce;
-			Console.WriteLine ("Accelerate triggered");
 		}
 
 		public void Turn (Utils.Direction d)
