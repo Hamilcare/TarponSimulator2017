@@ -14,7 +14,7 @@ namespace Tarpon.Core
 			toUpdate.Add (playerBoat);
 		}
 
-		public void UpdateUpdatables()
+		public void Update(int now)
 		{
 			
 		}
