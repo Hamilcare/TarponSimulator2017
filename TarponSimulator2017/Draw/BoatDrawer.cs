@@ -23,10 +23,10 @@ namespace Tarpon.Draw
 		{
 			spriteBatch.Draw(
 				Texture,						// Texture of the boat 
-				new Vector2(200,250), 		// Position 
+				CoreBoat.ApplicationPoint, 		// Position 
 				null, 
 				Color.White, 
-				0, 
+				CoreBoat.OrientiationFloat(), 
 				new Vector2(34, 0), 
 				1, 
 				SpriteEffects.None, 
@@ -34,4 +34,5 @@ namespace Tarpon.Draw
 		}
 	}
 }
+
 

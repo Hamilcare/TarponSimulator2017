@@ -78,11 +78,13 @@
     <Compile Include="Core\FishFactory.cs" />
     <Compile Include="Core\FishingRod.cs" />
     <Compile Include="Core\Physics.cs" />
+    <Compile Include="Utils\Direction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
     <Folder Include="Draw\" />
     <Folder Include="Controller\" />
     <Folder Include="Tests\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 </Project>
