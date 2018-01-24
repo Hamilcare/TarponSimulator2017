@@ -22,8 +22,6 @@ namespace Tarpon.Controller
 
 		public void SceneInputs(GameTime gameTime, KeyboardState _keyboardState, KeyboardState _oldKeyboardState, MouseState mouseState)
 		{
-			//Console.WriteLine ("SceneInputs");
-			//Console.WriteLine (actions.Count);
 			actions.Keys
 				.Where (currentKey => _keyboardState.IsKeyDown (currentKey))
 				.ToList().ForEach (currentKey => actions [currentKey].execute ());

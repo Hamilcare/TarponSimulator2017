@@ -9,12 +9,10 @@ namespace Tarpon.Controller
 
 		public CommandAccelerate (Boat boat) :base(boat)
 		{
-			Console.WriteLine ("Command Accelerate created");
 		}
 
 		override public void execute()
 		{
-			Console.WriteLine ("Command Accelerate execute triggered");
 			boat.Accelerate();
 		}
 	}
