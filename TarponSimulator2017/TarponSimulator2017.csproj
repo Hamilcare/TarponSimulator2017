@@ -79,6 +79,7 @@
     <Compile Include="Core\FishingRod.cs" />
     <Compile Include="Core\Physics.cs" />
     <Compile Include="Utils\Direction.cs" />
+    <Compile Include="Controller\CommandPlayerBoat.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />

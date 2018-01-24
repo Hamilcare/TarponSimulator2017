@@ -4,15 +4,15 @@ using Tarpon.Core;
 
 namespace Tarpon.Controller
 {
-	public class CommandBrake : Command
+	public class CommandBrake : CommandPlayerBoat
 	{
-		Boat boat;
+		
 
-		public CommandBrake ()
+		public CommandBrake (Boat boat) :base(boat)
 		{
 		}
 
-		public void execute()
+		new public void execute()
 		{
 		}
 	}

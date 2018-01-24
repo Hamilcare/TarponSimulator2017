@@ -4,16 +4,14 @@ using Tarpon.Core;
 
 namespace Tarpon.Controller
 {
-	public class CommandAccelerate : Command
+	public class CommandAccelerate : CommandPlayerBoat
 	{
-		readonly Boat boat;
 
-		public CommandAccelerate (Boat boat)
+		public CommandAccelerate (Boat boat) :base(boat)
 		{
-			this.boat = boat;
 		}
 
-		public void execute()
+		new public void execute()
 		{
 			boat.Accelerate();
 		}
