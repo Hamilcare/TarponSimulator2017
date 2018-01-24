@@ -166,7 +166,7 @@
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="28.0" width="107.0" x="646.5" y="236.0"/>
-          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="91.98486328125" x="7.507568359375" y="3.0">IObservable<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -187,7 +187,7 @@
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="28.0" width="100.0" x="650.0" y="161.0"/>
-          <y:Fill color="#FFCC00" transparent="false"/>
+          <y:Fill color="#FFFF99" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.1328125" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="75.86181640625" x="12.069091796875" y="3.0">IObserver<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -386,7 +386,6 @@ PlayerBoat<y:LabelModel>
     </edge>
     <edge id="e12" source="n5" target="n6">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-50.0" sy="7.142857142857167" tx="0.0" ty="33.5">
@@ -400,7 +399,6 @@ PlayerBoat<y:LabelModel>
     </edge>
     <edge id="e13" source="n2" target="n6">
       <data key="d8"/>
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-50.0" sy="0.0" tx="0.0" ty="-33.5">
