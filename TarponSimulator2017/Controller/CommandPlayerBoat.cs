@@ -13,10 +13,7 @@ namespace Tarpon.Controller
 			this.boat = boat;
 		}
 
-		public void execute()
-		{
-			
-		}
+		abstract public void execute();
 	}
 }
 

@@ -16,7 +16,7 @@ namespace Tarpon.Controller
 		}
 
 
-		new public void execute()
+		override public void execute()
 		{
 			boat.Turn (direction);
 		}

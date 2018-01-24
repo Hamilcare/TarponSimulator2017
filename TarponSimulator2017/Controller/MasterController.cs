@@ -23,6 +23,7 @@ namespace Tarpon.Controller
 
 		public void Update(GameTime gameTime, KeyboardState _keyboardState, KeyboardState _oldKeyboardState, MouseState mouseState)
 		{
+//			Console.WriteLine ("update MasterController");
 			scene.SceneInputs (gameTime, _keyboardState, _oldKeyboardState, mouseState);
 		}
 	}

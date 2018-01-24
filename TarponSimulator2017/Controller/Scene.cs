@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -21,6 +22,8 @@ namespace Tarpon.Controller
 
 		public void SceneInputs(GameTime gameTime, KeyboardState _keyboardState, KeyboardState _oldKeyboardState, MouseState mouseState)
 		{
+			//Console.WriteLine ("SceneInputs");
+			//Console.WriteLine (actions.Count);
 			actions.Keys
 				.Where (currentKey => _keyboardState.IsKeyDown (currentKey))
 				.ToList().ForEach (currentKey => actions [currentKey].execute ());
