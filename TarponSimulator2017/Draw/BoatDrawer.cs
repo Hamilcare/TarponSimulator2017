@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
@@ -9,10 +10,12 @@ namespace Tarpon.Draw
 		Core.Boat CoreBoat;
 		Texture2D Texture;
 		Rectangle TextureRegion;
+		float RotationShift;
 
 		public BoatDrawer(Core.Boat boat)
 		{
 			CoreBoat = boat;
+			RotationShift = (float)Math.PI;
 		}
 
 		public void LoadContent(ContentManager content)
@@ -32,7 +35,7 @@ namespace Tarpon.Draw
 				CoreBoat.ApplicationPoint, 		// Position 
 				TextureRegion, 
 				Color.White, 
-				CoreBoat.OrientiationFloat(), 
+				CoreBoat.OrientiationFloat() + RotationShift, 
 				new Vector2(33, 0), 
 				1, 
 				SpriteEffects.None, 

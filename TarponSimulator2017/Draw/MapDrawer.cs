@@ -28,7 +28,7 @@ namespace Tarpon.Draw
 			for (int i = 0; i < width; i += 128) {
 				for (int j = 0; j < height; j += 128) {
 					spriteBatch.Draw (
-						Texture,						// Texture of the boat 
+						Texture,				    // Water PNG 
 						new Vector2 (i, j), 		// Position 
 						TextureRegion, 
 						Color.White, 

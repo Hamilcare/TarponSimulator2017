@@ -63,7 +63,7 @@ namespace Tarpon.Core
 
 		public float OrientiationFloat ()
 		{
-			return (float) (Math.Atan2 (Orientation.X, -Orientation.Y) + Math.PI);
+			return (float) Math.Atan2 (Orientation.X, -Orientation.Y);
 		}
 
 		public void Accelerate ()
