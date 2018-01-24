@@ -60,6 +60,7 @@ namespace Tarpon
 			// Extraction of elements to draw should be done in the "Draw" folder
 			// Note that the order in the list is important => items at the beginning will be drawn fist
 			//toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
+			toDraw.Add(new MapDrawer(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 			toDraw.Add(new BoatDrawer(world.playerBoat));
 
 			base.Initialize();

@@ -10,10 +10,11 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:../packages/MonoGame.Extended.Content.Pipeline.1.0.617/tools/MonoGame.Extended.Content.Pipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Content/Sprites/boat.png
+#begin Content/img/spritesheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,5 +24,17 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Content/Sprites/boat.png
+/build:Content/img/spritesheet.png
+
+#begin Content/img/tilesheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Content/img/tilesheet.png
 
