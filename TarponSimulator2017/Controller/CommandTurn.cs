@@ -5,18 +5,18 @@ using Tarpon.Utils;
 
 namespace Tarpon.Controller
 {
-	public class CommandTurn : Command
+	public class CommandTurn : CommandPlayerBoat
 	{
-		Boat boat;
 		Direction direction;
 
-		public CommandTurn (Boat b, Direction d)
+		public CommandTurn (Boat b, Direction d):base(b)
 		{
-			boat = b;
+			
 			direction = d;
 		}
 
-		public void execute()
+
+		override public void execute()
 		{
 			boat.Turn (direction);
 		}
