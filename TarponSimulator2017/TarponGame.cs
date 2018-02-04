@@ -62,6 +62,8 @@ namespace Tarpon
 			//toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
 			toDraw.Add(new MapDrawer(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 			toDraw.Add(new BoatDrawer(world.playerBoat));
+			toDraw.Add(new RodDrawer(world.playerBoat));
+			toDraw.Add (new FishingFloatDrawer (world.playerBoat, this.GraphicsDevice));
 
 			base.Initialize();
 		}
@@ -85,7 +87,7 @@ namespace Tarpon
 
 
 		protected override void Draw(GameTime gameTime) {
-			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+//			graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
 			base.Draw(gameTime);
 
 			// Start drawing

@@ -87,6 +87,8 @@
     <Compile Include="Utils\Direction.cs" />
     <Compile Include="Controller\CommandPlayerBoat.cs" />
     <Compile Include="Draw\MapDrawer.cs" />
+    <Compile Include="Draw\RodDrawer.cs" />
+    <Compile Include="Draw\FishingFloatDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />

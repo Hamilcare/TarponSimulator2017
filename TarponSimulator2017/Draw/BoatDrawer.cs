@@ -33,13 +33,13 @@ namespace Tarpon.Draw
 			spriteBatch.Draw(
 				Texture,						// Texture of the boat 
 				CoreBoat.ApplicationPoint, 		// Position 
-				TextureRegion, 
-				Color.White, 
-				CoreBoat.OrientiationFloat() + RotationShift, 
-				new Vector2(33, 0), 
-				1, 
-				SpriteEffects.None, 
-				0); 
+				TextureRegion, 					// Select only a part of picture
+				Color.White, 					// Change lightening atmosphere
+				CoreBoat.OrientiationFloat() + RotationShift, //Angle
+				new Vector2(33, 0), //Shift 
+				1, //Scale
+				SpriteEffects.None, // Flip or not the sprite
+				0); //layer Depth 
 		}
 	}
 }
