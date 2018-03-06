@@ -113,7 +113,7 @@ namespace Tarpon.Core
 
 			// Add the new speed to the position
 			ApplicationPoint += Speed * elapsedTime;
-
+			CentralPosition += Speed * elapsedTime;
 
 
 			//Set Speed to zero under a certain limit

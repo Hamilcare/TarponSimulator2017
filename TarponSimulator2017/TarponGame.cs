@@ -61,9 +61,12 @@ namespace Tarpon
 			// Note that the order in the list is important => items at the beginning will be drawn fist
 			//toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
 			toDraw.Add(new MapDrawer(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
+			toDraw.Add (new FishingFloatDrawer (world.playerBoat, this.GraphicsDevice));
+			toDraw.Add (new FishingLineDrawer (world.playerBoat, world.playerBoat.fishingRod, this.GraphicsDevice));
 			toDraw.Add(new BoatDrawer(world.playerBoat));
 			toDraw.Add(new RodDrawer(world.playerBoat));
-			toDraw.Add (new FishingFloatDrawer (world.playerBoat, this.GraphicsDevice));
+
+
 
 			base.Initialize();
 		}

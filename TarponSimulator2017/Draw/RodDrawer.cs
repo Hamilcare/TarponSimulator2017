@@ -10,6 +10,7 @@ namespace Tarpon.Draw
 		Core.Boat CoreBoat;
 		Texture2D Texture;
 		float RotationShift;
+		public static Vector2 printShift = new Vector2 (80, 250);//shit origin of draw to correctly place the fishing rod
 
 		public RodDrawer (Core.Boat boat)
 		{
@@ -27,11 +28,11 @@ namespace Tarpon.Draw
 		{
 			spriteBatch.Draw(
 				Texture,						// Texture of the road 
-				CoreBoat.ApplicationPoint, 		// Position 
+				CoreBoat.fishingRod.Position, 		// Position
 				null, 
 				Color.White, 
 				CoreBoat.OrientiationFloat() + RotationShift, 
-				new Vector2(80, 250), 
+				printShift,
 				1, 
 				SpriteEffects.None, 
 				0); 

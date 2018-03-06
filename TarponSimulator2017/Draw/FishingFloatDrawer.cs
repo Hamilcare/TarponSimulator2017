@@ -9,7 +9,7 @@ namespace Tarpon.Draw
 	{
 		Core.Boat CoreBoat;
 		Texture2D Texture;
-		int radius = 30;
+		public static int radius = 30;
 
 		public FishingFloatDrawer (Core.Boat boat, GraphicsDevice gd)
 		{
@@ -57,12 +57,12 @@ namespace Tarpon.Draw
 				Texture,						// Texture of the float 
 				CoreBoat.ApplicationPoint, 		// Position 
 				null, 
-				Color.Red, 
-				CoreBoat.OrientiationFloat(),
-				new Vector2(radius/2, 250 + 3 * radius), //250 = rod length
-				1, 
-				SpriteEffects.None, 
-				0); 
+				Color.Red, // Change lightening atmosphere
+				CoreBoat.OrientiationFloat(), //Angle
+				new Vector2(radius/2 , 250 + 3 * radius + CoreBoat.fishingRod.FishingFloatShift.Y), //shift //250 = rod length
+				1, //Scale
+				SpriteEffects.None, // Flip or not the sprite
+				0); //layer Depth
 		}
 	}
 }
