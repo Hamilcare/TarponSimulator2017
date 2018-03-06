@@ -70,10 +70,6 @@
     <Compile Include="Core\World.cs" />
     <Compile Include="Core\IUpdatable.cs" />
     <Compile Include="Controller\Scene.cs" />
-    <Compile Include="Controller\Command.cs" />
-    <Compile Include="Controller\CommandAccelerate.cs" />
-    <Compile Include="Controller\CommandTurn.cs" />
-    <Compile Include="Controller\CommandBrake.cs" />
     <Compile Include="Controller\SceneInGame.cs" />
     <Compile Include="Controller\SceneMenu.cs" />
     <Compile Include="Controller\MasterController.cs" />
@@ -85,8 +81,18 @@
     <Compile Include="Core\FishingRod.cs" />
     <Compile Include="Core\Physics.cs" />
     <Compile Include="Utils\Direction.cs" />
-    <Compile Include="Controller\CommandPlayerBoat.cs" />
     <Compile Include="Draw\MapDrawer.cs" />
+    <Compile Include="Draw\RodDrawer.cs" />
+    <Compile Include="Draw\FishingFloatDrawer.cs" />
+    <Compile Include="Draw\FishingLineDrawer.cs" />
+    <Compile Include="Controller\CommandBoat\CommandAccelerate.cs" />
+    <Compile Include="Controller\CommandBoat\CommandBrake.cs" />
+    <Compile Include="Controller\CommandBoat\CommandPlayerBoat.cs" />
+    <Compile Include="Controller\CommandBoat\CommandTurn.cs" />
+    <Compile Include="Controller\ICommand.cs" />
+    <Compile Include="Controller\CommandFishingRod\CommandBringCloser.cs" />
+    <Compile Include="Controller\CommandFishingRod\CommandFishingRod.cs" />
+    <Compile Include="Controller\CommandFishingRod\CommandMoveAwayFloat.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -94,5 +100,7 @@
     <Folder Include="Controller\" />
     <Folder Include="Tests\" />
     <Folder Include="Utils\" />
+    <Folder Include="Controller\CommandBoat\" />
+    <Folder Include="Controller\CommandFishingRod\" />
   </ItemGroup>
 </Project>

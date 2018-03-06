@@ -11,10 +11,11 @@ namespace Tarpon.Core
 		public  const float TurnSpeedBoat = 0.0001f;
 		public  const float MaxTurnAngleBoat = 0.02f;
 
+		public FishingRod fishingRod { get; private set; }
 
 		public Boat(int StartAbscisse, int StartOrdinate) : base (FrictionForceBoat, AccelerationForceBoat, TurnSpeedBoat, MaxTurnAngleBoat, StartAbscisse, StartOrdinate)
 		{
-			
+			this.fishingRod = new FishingRod (this.CentralPosition);
 
 		}
 			
@@ -22,8 +23,7 @@ namespace Tarpon.Core
 		public void Update(int now)
 		{
 			ComputeMovement(now);
-
-
+			fishingRod.updatePosition (this.CentralPosition);
 		}
 			
 

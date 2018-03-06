@@ -2,9 +2,8 @@
 
 namespace Tarpon.Controller
 {
-	public interface Command
+	public interface ICommand
 	{
 		void execute();
 	}
 }
-

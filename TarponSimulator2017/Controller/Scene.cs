@@ -11,13 +11,13 @@ namespace Tarpon.Controller
 	public abstract class Scene
 	{
 		//Pour éviter le switch case
-		public Dictionary<Keys,Command> actions {get; protected set;}
+		public Dictionary<Keys,ICommand> actions {get; protected set;}
 		//ptrdr pour passer le bateau aux commandes
 		public static World world {get; set;}
 
 		public Scene ()
 		{
-			actions = new Dictionary<Keys,Command>();
+			actions = new Dictionary<Keys,ICommand>();
 		}
 
 		public void SceneInputs(GameTime gameTime, KeyboardState _keyboardState, KeyboardState _oldKeyboardState, MouseState mouseState)
