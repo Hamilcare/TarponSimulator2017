@@ -11,19 +11,28 @@ namespace Tarpon.Core
 		public  const float TurnSpeedBoat = 0.0001f;
 		public  const float MaxTurnAngleBoat = 0.02f;
 
+		/// <summary>
+		/// Gets or sets the fishing rod.
+		/// </summary>
+		/// <value>The fishing rod.</value>
+		public FishingRod FishingRod{ get; private set; }
 
-		public Boat(int StartAbscisse, int StartOrdinate) : base (FrictionForceBoat, AccelerationForceBoat, TurnSpeedBoat, MaxTurnAngleBoat, StartAbscisse, StartOrdinate)
+
+		public Boat (int StartAbscisse, int StartOrdinate) : base (FrictionForceBoat, AccelerationForceBoat, TurnSpeedBoat, MaxTurnAngleBoat, StartAbscisse, StartOrdinate)
 		{
-			
-
+			this.FishingRod = new FishingRod (this.CentralPosition);
 		}
-			
 
-		public void Update(int now)
+
+		public void Update (int now)
 		{
-			ComputeMovement(now);
+			ComputeMovement (now);
+			this.FishingRod.Update (this.ApplicationPoint, this.Orientation);
+		}
 
-
+		public void Update (Vector2 vector, Vector2 anotherVector)
+		{
+			throw new Exception ("Unsupported Operation Exception");
 		}
 			
 

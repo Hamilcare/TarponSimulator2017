@@ -5,7 +5,7 @@ using Tarpon.Utils;
 namespace Tarpon.Core
 {
 
-	public class Physics
+	public class Physics : GameObject
 	{
 		
 
@@ -63,7 +63,7 @@ namespace Tarpon.Core
 
 		public float OrientiationFloat ()
 		{
-			return (float) Math.Atan2 (Orientation.X, -Orientation.Y);
+			return (float)Math.Atan2 (Orientation.X, -Orientation.Y);
 		}
 
 		public void Accelerate ()
