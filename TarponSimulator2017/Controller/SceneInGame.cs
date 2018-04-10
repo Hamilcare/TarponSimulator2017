@@ -18,9 +18,6 @@ namespace Tarpon.Controller
 		private SceneInGame ()
 		{
 			actions = new Dictionary<Keys,Command> ();
-			//this.actions.Add(Keys.Up, new CommandAccelerate(world.playerBoat));
-			//this.actions.Add(Keys.Right, new CommandTurn (world.playerBoat));
-			//this.actions.Add(Keys.Left, new CommandTurn (world.playerBoat));
 		}
 
 		public SceneInGame (World world)
@@ -30,8 +27,9 @@ namespace Tarpon.Controller
 			this.actions.Add (Keys.Up, new CommandAccelerate (world.playerBoat));
 			this.actions.Add (Keys.Right, new CommandTurn (world.playerBoat, Direction.Right));
 			this.actions.Add (Keys.Left, new CommandTurn (world.playerBoat, Direction.Left));
-			this.actions.Add (Keys.LeftShift, new CommandMovesFloatAwayFromFishingRod (world.playerBoat.FishingRod));
-			this.actions.Add (Keys.LeftControl, new CommandBringFloatCloser (world.playerBoat.FishingRod));
+			this.actions.Add (Keys.Q, new CommandMovesFloatAwayFromFishingRod (world.playerBoat.FishingRod));
+			this.actions.Add (Keys.D, new CommandBringFloatCloser (world.playerBoat.FishingRod));
+			this.actions.Add (Keys.Space, new CommandThrowOrGetBack (world.playerBoat.FishingRod));
 		}
 
 

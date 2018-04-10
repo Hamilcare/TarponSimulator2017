@@ -94,6 +94,10 @@
     <Compile Include="Controller\CommandRod\CommandRod.cs" />
     <Compile Include="Controller\CommandRod\CommandMovesFloatAwayFromFishingRod.cs" />
     <Compile Include="Controller\CommandRod\CommandBringFloatCloser.cs" />
+    <Compile Include="Core\RodStateMachine\RodState.cs" />
+    <Compile Include="Core\RodStateMachine\RodStateReadyToLaunch.cs" />
+    <Compile Include="Core\RodStateMachine\RodStateIdleInTheWater.cs" />
+    <Compile Include="Controller\CommandRod\CommandThrowOrGetBack.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -104,5 +108,6 @@
     <Folder Include="Core\Physic\" />
     <Folder Include="Controller\CommandBoat\" />
     <Folder Include="Controller\CommandRod\" />
+    <Folder Include="Core\RodStateMachine\" />
   </ItemGroup>
 </Project>

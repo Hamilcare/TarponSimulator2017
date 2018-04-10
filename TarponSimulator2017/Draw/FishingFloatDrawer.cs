@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Tarpon.Core;
 
 namespace Tarpon.Draw
 {
@@ -50,11 +51,18 @@ namespace Tarpon.Draw
 
 		public void Draw (SpriteBatch spriteBatch, GameTime gameTime)
 		{
+			Color color;
+			if (this.Boat.FishingRod.CurrentState.GetType () == typeof(RodStateIdleInTheWater)) {
+				color = Color.Green;
+			} else {
+				color = Color.Red;
+			}
+
 			spriteBatch.Draw (
 				Texture,						// Texture of the float
 				FishingFloat.AbsolutePosition,		
 				null, 
-				Color.Red, // Change lightening atmosphere
+				color, // Change lightening atmosphere
 				this.Boat.AbsoluteOrientation + RotationShift,  //Rotation
 				new Vector2 (15, -15), //Shift 
 				1, //Scale

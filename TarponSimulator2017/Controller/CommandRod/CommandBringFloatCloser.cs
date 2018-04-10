@@ -12,7 +12,7 @@ namespace Tarpon.Controller
 
 		override public void execute ()
 		{
-			FishingRod.BringFloatCloser ();
+			FishingRod.CurrentState.BringFloatCloser ();
 		}
 	}
 }

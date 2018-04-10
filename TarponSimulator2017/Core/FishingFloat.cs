@@ -56,17 +56,21 @@ namespace Tarpon.Core
 			this.RelativePosition = new Vector2 (0, -CurrentDistance);
 		}
 
-		public void MoveAway ()
+		public void MoveAway (int step)
 		{
-			if (CurrentDistance < MAXIMAL_DISTANCE) {
-				this.CurrentDistance += STEP;
+			if (CurrentDistance + step <= MAXIMAL_DISTANCE) {
+				this.CurrentDistance += step;
+			} else {
+				this.CurrentDistance = MAXIMAL_DISTANCE;
 			}
 		}
 
-		public void ComeCloser ()
+		public void ComeCloser (int step)
 		{
-			if (CurrentDistance >= MINIMAL_DISTANCE) {
+			if (CurrentDistance - step >= MINIMAL_DISTANCE) {
 				this.CurrentDistance -= STEP;
+			} else {
+				this.CurrentDistance = MINIMAL_DISTANCE;
 			}
 		}
 	}
