@@ -22,7 +22,6 @@ namespace Tarpon.Core
 {
 	public class GameObject
 	{
-		//public GameObject FrameOfReference{ get; private set; }
 
 		public List<GameObject> FrameOfReferenceFor{ get; private set; }
 

@@ -28,7 +28,7 @@ namespace Tarpon.Core
 		public void Update (int now)
 		{
 			ComputeMovement (now);
-			this.FishingRod.Update (this.ApplicationPoint, this.Orientation);
+			this.FishingRod.Update (this.RelativePosition, this.Orientation);
 		}
 
 		public void Update (Vector2 vector, Vector2 anotherVector)

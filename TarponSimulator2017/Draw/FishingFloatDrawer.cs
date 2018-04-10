@@ -55,7 +55,7 @@ namespace Tarpon.Draw
 				FishingFloat.AbsolutePosition,		
 				null, 
 				Color.Red, // Change lightening atmosphere
-				this.Boat.OrientiationFloat () + RotationShift,  //Rotation
+				this.Boat.AbsoluteOrientation + RotationShift,  //Rotation
 				new Vector2 (15, -15), //Shift 
 				1, //Scale
 				SpriteEffects.None, 
