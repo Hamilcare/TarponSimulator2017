@@ -52,7 +52,7 @@ namespace Tarpon.Draw
 		{
 			spriteBatch.Draw (
 				Texture,						// Texture of the float
-				FishingFloat.Position,		
+				FishingFloat.AbsolutePosition,		
 				null, 
 				Color.Red, // Change lightening atmosphere
 				this.Boat.OrientiationFloat () + RotationShift,  //Rotation

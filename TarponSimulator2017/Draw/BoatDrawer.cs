@@ -12,13 +12,13 @@ namespace Tarpon.Draw
 		Rectangle TextureRegion;
 		float RotationShift;
 
-		public BoatDrawer(Core.Boat boat)
+		public BoatDrawer (Core.Boat boat)
 		{
 			CoreBoat = boat;
 			RotationShift = (float)Math.PI;
 		}
 
-		public void LoadContent(ContentManager content)
+		public void LoadContent (ContentManager content)
 		{
 			/*
 			 * @FIXME: The spritesheet should be loaded in an external class
@@ -28,15 +28,15 @@ namespace Tarpon.Draw
 			TextureRegion = new Rectangle (204, 115, 66, 113);
 		}
 
-		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+		public void Draw (SpriteBatch spriteBatch, GameTime gameTime)
 		{
-			spriteBatch.Draw(
+			spriteBatch.Draw (
 				Texture,						// Texture of the boat 
-				CoreBoat.ApplicationPoint, 		// Position 
+				CoreBoat.AbsolutePosition, 		// Position 
 				TextureRegion, 
 				Color.White, 
-				CoreBoat.OrientiationFloat() + RotationShift, 
-				new Vector2(33, 0), 
+				CoreBoat.AbsoluteOrientation + RotationShift, 
+				new Vector2 (33, 0), 
 				1, 
 				SpriteEffects.None, 
 				0); 

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Tarpon.Core
 {
-	public class FishingRod : IUpdatable
+	public class FishingRod : GameObject, IUpdatable
 	{
 		/// <summary>
 		/// Gets the fishing float.
@@ -12,17 +12,16 @@ namespace Tarpon.Core
 		public FishingFloat FishingFloat { get; private set; }
 
 		/// <summary>
-		/// Position the specified .
+		/// Initializes a new instance of the <see cref="Tarpon.Core.FishingRod"/> class.
 		/// </summary>
-		/// <param name="">.</param>
-		public Vector2 Position { get; private set; }
-
+		/// <param name="Position">Position. !! Must be given in parent's frame of reference. !!</param>
 		public FishingRod (Vector2 Position)
 		{
-			this.Position = Position;
-			this.FishingFloat = new FishingFloat (this.Position);
-		}
+			this.RelativePosition = Position;
+			this.FishingFloat = new FishingFloat (Position);
+			this.FishingFloat.FrameOfReference = this;
 
+		}
 
 		/// <summary>
 		/// Update Float using elapsed time.
@@ -43,8 +42,7 @@ namespace Tarpon.Core
 		/// <param name="boatPosition">Boat position.</param>
 		public void Update (Vector2 boatPosition, Vector2 boatOrientation)
 		{
-			this.Position = new Vector2 (boatPosition.X, boatPosition.Y);
-			this.FishingFloat.Update (this.Position, boatOrientation);
+			this.FishingFloat.Update (this.RelativePosition, boatOrientation);
 		}
 	}
 }

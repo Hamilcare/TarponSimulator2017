@@ -8,28 +8,15 @@ using Microsoft.Xna.Framework;
 
 namespace Tarpon.Core
 {
-	public class FishingFloat : IUpdatable
+	public class FishingFloat : GameObject, IUpdatable
 	{
-		/// <summary>
-		/// Gets the position.
-		/// </summary>
-		/// <value>The position.</value>
-		public Vector2 Position { get; private set; }
-
-		/// <summary>
-		/// Gets the old rod position.
-		/// </summary>
-		/// <value>The old rod position.</value>
-		public Vector2 OldRodPosition{ get; private set; }
-
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Tarpon.Core.FishingFloat"/> class.
 		/// </summary>
-		/// <param name="FishingRod">Fishing rod.</param>
-		public FishingFloat (Vector2 FishingRodPosition)
+		/// <param name="StartPosition">Start position. !! Must be given in parent's frame of reference. !!</param>
+		public FishingFloat (Vector2 StartPosition)
 		{
-			this.Position = FishingRodPosition;
-			this.OldRodPosition = FishingRodPosition;
+			this.RelativePosition = StartPosition;
 		}
 
 
@@ -50,25 +37,9 @@ namespace Tarpon.Core
 		/// <param name="RodPosition">Rod position.</param>
 		public void Update (Vector2 FishingRodPosition, Vector2 boatOrientation)
 		{
-			Console.WriteLine ("Updating Float");
-			Console.WriteLine ("Rod Position: " + FishingRodPosition);
-
-			Vector2 NewPosition = FishingRodPosition;
-
-			if (NewPosition != OldRodPosition) {
-
-				Vector2 RodDirection = Vector2.Normalize (boatOrientation);
-
-				Console.WriteLine ("Direction: " + RodDirection);
-
-				this.Position = FishingRodPosition + 140 * RodDirection;
-				//this.Position = NewPosition;
-
-				this.OldRodPosition = FishingRodPosition;
-			}
+			this.RelativePosition = new Vector2 (0, -200);
 		}
-
-
+			
 	}
 }
 

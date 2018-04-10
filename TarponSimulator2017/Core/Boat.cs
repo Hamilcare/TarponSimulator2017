@@ -20,7 +20,8 @@ namespace Tarpon.Core
 
 		public Boat (int StartAbscisse, int StartOrdinate) : base (FrictionForceBoat, AccelerationForceBoat, TurnSpeedBoat, MaxTurnAngleBoat, StartAbscisse, StartOrdinate)
 		{
-			this.FishingRod = new FishingRod (this.CentralPosition);
+			this.FishingRod = new FishingRod (new Vector2 (0, -80));
+			this.FishingRod.FrameOfReference = this;
 		}
 
 

@@ -133,6 +133,10 @@ namespace Tarpon.Core
 			//Must be reset at the end of computation
 			Acceleration = new Vector2 (0, 0);
 			TurnAngleSpeed = 0f;
+
+			//Using GameObject logic 
+			this.RelativePosition = ApplicationPoint;
+			this.RelativeOrientation = this.OrientiationFloat ();
 		}
 	}
 }
