@@ -8,7 +8,6 @@ namespace Tarpon.Core
 	public class Physics : GameObject
 	{
 		
-
 		public float FrictionForce{ get; private set; }
 
 		public float AccelerationForce{ get; private set; }
@@ -25,10 +24,6 @@ namespace Tarpon.Core
 
 		public Vector2 Speed { get; private set; }
 
-
-		public Vector2 CentralPosition { get; private set; }
-
-
 		/**Le point de l'objet où la physique s'applique**/
 		public Vector2 ApplicationPoint { get; private set; }
 
@@ -37,11 +32,6 @@ namespace Tarpon.Core
 
 
 		public float TurnAngle { get; private set; }
-
-
-		int elapsedTime;
-		// in milliseconds
-
 
 		public Physics ()
 		{
@@ -55,7 +45,6 @@ namespace Tarpon.Core
 			this.TurnSpeed = TurnSpeed;
 			this.MaxTurnAngle = MaxTurnAngle;
 
-			CentralPosition = new Vector2 (AbscisseDepart, OrdonneeDepart);
 			ApplicationPoint = new Vector2 (AbscisseDepart, OrdonneeDepart);
 
 			Orientation = new Vector2 (0, -1);
@@ -79,8 +68,6 @@ namespace Tarpon.Core
 		public void ComputeMovement (int elapsedTime)
 		{
 			
-
-
 			// Friction
 			Acceleration += -Speed * FrictionForce;
 
@@ -113,8 +100,6 @@ namespace Tarpon.Core
 
 			// Add the new speed to the position
 			ApplicationPoint += Speed * elapsedTime;
-
-
 
 			//Set Speed to zero under a certain limit
 			if (Math.Abs (Speed.X) < 0.000001f)

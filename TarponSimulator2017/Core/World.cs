@@ -23,12 +23,6 @@ namespace Tarpon.Core
 			ComputeTree (this.TotalTransformation);
 			toUpdate.ForEach (tu => tu.Update (now));
 			ComputeTree (this.TotalTransformation);
-
-			Console.WriteLine ("Boat Absolute : " + playerBoat.AbsolutePosition);
-			Console.WriteLine ("Rod Absolute : " + playerBoat.FishingRod.AbsolutePosition);
-			Console.WriteLine ("Rod Relative : " + playerBoat.FishingRod.RelativePosition);
 		}
-
-
 	}
 }

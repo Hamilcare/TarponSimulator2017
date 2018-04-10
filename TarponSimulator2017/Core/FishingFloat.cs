@@ -39,7 +39,6 @@ namespace Tarpon.Core
 		{
 			this.RelativePosition = new Vector2 (0, -200);
 		}
-			
 	}
 }
 
