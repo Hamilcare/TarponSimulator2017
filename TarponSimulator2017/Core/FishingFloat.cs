@@ -11,6 +11,22 @@ namespace Tarpon.Core
 	public class FishingFloat : GameObject, IUpdatable
 	{
 		/// <summary>
+		/// minimal distance between rod and float
+		/// </summary>
+		public const int MINIMAL_DISTANCE = 15;
+
+		/// <summary>
+		/// maximal distance between rod and float
+		/// </summary>
+		public const int MAXIMAL_DISTANCE = 250;
+
+		public const int STEP = 5;
+		/// <summary>
+		/// The current distance between the rod and the float
+		/// </summary>
+		public int CurrentDistance = MINIMAL_DISTANCE;
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="Tarpon.Core.FishingFloat"/> class.
 		/// </summary>
 		/// <param name="StartPosition">Start position. !! Must be given in parent's frame of reference. !!</param>
@@ -37,7 +53,21 @@ namespace Tarpon.Core
 		/// <param name="RodPosition">Rod position.</param>
 		public void Update (Vector2 FishingRodPosition, Vector2 boatOrientation)
 		{
-			this.RelativePosition = new Vector2 (0, -200);
+			this.RelativePosition = new Vector2 (0, -CurrentDistance);
+		}
+
+		public void MoveAway ()
+		{
+			if (CurrentDistance < MAXIMAL_DISTANCE) {
+				this.CurrentDistance += STEP;
+			}
+		}
+
+		public void ComeCloser ()
+		{
+			if (CurrentDistance >= MINIMAL_DISTANCE) {
+				this.CurrentDistance -= STEP;
+			}
 		}
 	}
 }

@@ -44,6 +44,16 @@ namespace Tarpon.Core
 		{
 			this.FishingFloat.Update (this.RelativePosition, boatOrientation);
 		}
+
+		public void MoveAwayFloat ()
+		{
+			FishingFloat.MoveAway ();
+		}
+
+		public void BringFloatCloser ()
+		{
+			FishingFloat.ComeCloser ();
+		}
 	}
 }
 
