@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using System.Linq;
 
+
+
 /// <summary>
 /// Game object.
 /// ############
@@ -12,10 +14,14 @@ using System.Linq;
 /// 14 24 34 44
 /// ############
 ///
+/// ############
 /// cos -sin 0 x
 /// sin  cos 0 y
 ///  0    0  1 0
 ///  0    0  0 1
+/// ############
+///
+/// @see https://www.youtube.com/watch?v=vQ60rFwh2ig
 /// </summary>
 
 namespace Tarpon.Core
@@ -44,7 +50,7 @@ namespace Tarpon.Core
 				Vector3 translation;
 				PartialTransformation.Decompose (out scale, out rotation, out translation);
 				Vector3 Position = new Vector3 (value.X, value.Y, 0);
-				PartialTransformation = Matrix.CreateFromQuaternion (rotation)
+				PartialTransformation = Matrix.CreateScale (scale) * Matrix.CreateFromQuaternion (rotation)
 				* Matrix.CreateTranslation (Position);
 			}
 		}
@@ -97,6 +103,7 @@ namespace Tarpon.Core
 
 		private static float ExtractOrientation (Matrix m)
 		{
+			//@see https://en.wikipedia.org/wiki/Atan2
 			return (float)Math.Atan2 (m.M12, m.M11);
 		}
 			

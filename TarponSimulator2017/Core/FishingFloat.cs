@@ -20,7 +20,6 @@ namespace Tarpon.Core
 		/// </summary>
 		public const int MAXIMAL_DISTANCE = 250;
 
-		public const int STEP = 5;
 		/// <summary>
 		/// The current distance between the rod and the float
 		/// </summary>
@@ -68,7 +67,7 @@ namespace Tarpon.Core
 		public void ComeCloser (int step)
 		{
 			if (CurrentDistance - step >= MINIMAL_DISTANCE) {
-				this.CurrentDistance -= STEP;
+				this.CurrentDistance -= step;
 			} else {
 				this.CurrentDistance = MINIMAL_DISTANCE;
 			}

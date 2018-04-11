@@ -15,21 +15,20 @@ namespace Tarpon.Controller
 
 		public static SceneInGame Instance { get { return lazy.Value; } }
 
-		private SceneInGame ()
+		private SceneInGame () : base ()
 		{
-			actions = new Dictionary<Keys,Command> ();
+			
 		}
 
-		public SceneInGame (World world)
+		public SceneInGame (World world) : base ()
 		{
-			actions = new Dictionary<Keys,Command> ();
 			Scene.world = world;
-			this.actions.Add (Keys.Up, new CommandAccelerate (world.playerBoat));
-			this.actions.Add (Keys.Right, new CommandTurn (world.playerBoat, Direction.Right));
-			this.actions.Add (Keys.Left, new CommandTurn (world.playerBoat, Direction.Left));
-			this.actions.Add (Keys.Q, new CommandMovesFloatAwayFromFishingRod (world.playerBoat.FishingRod));
-			this.actions.Add (Keys.D, new CommandBringFloatCloser (world.playerBoat.FishingRod));
-			this.actions.Add (Keys.Space, new CommandThrowOrGetBack (world.playerBoat.FishingRod));
+			this.ContiniousActions.Add (Keys.Up, new CommandAccelerate (world.playerBoat));
+			this.ContiniousActions.Add (Keys.Right, new CommandTurn (world.playerBoat, Direction.Right));
+			this.ContiniousActions.Add (Keys.Left, new CommandTurn (world.playerBoat, Direction.Left));
+			this.ContiniousActions.Add (Keys.Q, new CommandMovesFloatAwayFromFishingRod (world.playerBoat.FishingRod));
+			this.ContiniousActions.Add (Keys.D, new CommandBringFloatCloser (world.playerBoat.FishingRod));
+			this.OneTimeActions.Add (Keys.Space, new CommandThrowOrGetBack (world.playerBoat.FishingRod));
 		}
 
 
