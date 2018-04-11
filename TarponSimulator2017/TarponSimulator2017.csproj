@@ -87,6 +87,10 @@
     <Compile Include="Utils\Direction.cs" />
     <Compile Include="Controller\CommandPlayerBoat.cs" />
     <Compile Include="Draw\MapDrawer.cs" />
+    <Compile Include="Core\FishingFloat.cs" />
+    <Compile Include="Draw\FishingFloatDrawer.cs" />
+    <Compile Include="Core\Physic\GameObject.cs" />
+    <Compile Include="Tests\GameObjectTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -94,5 +98,6 @@
     <Folder Include="Controller\" />
     <Folder Include="Tests\" />
     <Folder Include="Utils\" />
+    <Folder Include="Core\Physic\" />
   </ItemGroup>
 </Project>
