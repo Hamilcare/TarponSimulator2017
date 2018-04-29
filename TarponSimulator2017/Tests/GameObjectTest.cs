@@ -31,9 +31,8 @@ namespace Tarpon.Test
 
 			world.ComputeTree (world.TotalTransformation);
 
-			Console.WriteLine (Rod.AbsolutePosition);
-
-			//Console.WriteLine (Rod.TotalTransformation);
+			Assert.AreEqual (3, Rod.AbsolutePosition.X, 0.01);
+			Assert.AreEqual (-4, Rod.AbsolutePosition.Y, 0.01);
 		}
 	}
 }

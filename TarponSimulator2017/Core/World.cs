@@ -20,7 +20,7 @@ namespace Tarpon.Core
 
 		public void Update (int now)
 		{
-			ComputeTree (this.TotalTransformation);
+			//ComputeTree (this.TotalTransformation);
 			toUpdate.ForEach (tu => tu.Update (now));
 			ComputeTree (this.TotalTransformation);
 		}

@@ -23,7 +23,7 @@ namespace Tarpon
 		KeyboardState oldKeyboardState;
 		MouseState mouseState;
 
-		World world;
+
 		List<IDrawer> toDraw;
 		IController toControl;
 		Scene scene;
@@ -64,6 +64,7 @@ namespace Tarpon
 			toDraw.Add (new MapDrawer (graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 			toDraw.Add (new BoatDrawer (world.playerBoat));
 			toDraw.Add (new FishingFloatDrawer (world.playerBoat, world.playerBoat.FishingRod.FishingFloat, this.GraphicsDevice));
+			toDraw.Add (new FishingLineDrawer (world.playerBoat, world.playerBoat.FishingRod, this.GraphicsDevice));
 
 			base.Initialize ();
 		}

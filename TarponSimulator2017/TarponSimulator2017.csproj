@@ -71,9 +71,6 @@
     <Compile Include="Core\IUpdatable.cs" />
     <Compile Include="Controller\Scene.cs" />
     <Compile Include="Controller\Command.cs" />
-    <Compile Include="Controller\CommandAccelerate.cs" />
-    <Compile Include="Controller\CommandTurn.cs" />
-    <Compile Include="Controller\CommandBrake.cs" />
     <Compile Include="Controller\SceneInGame.cs" />
     <Compile Include="Controller\SceneMenu.cs" />
     <Compile Include="Controller\MasterController.cs" />
@@ -85,12 +82,23 @@
     <Compile Include="Core\FishingRod.cs" />
     <Compile Include="Core\Physics.cs" />
     <Compile Include="Utils\Direction.cs" />
-    <Compile Include="Controller\CommandPlayerBoat.cs" />
     <Compile Include="Draw\MapDrawer.cs" />
     <Compile Include="Core\FishingFloat.cs" />
     <Compile Include="Draw\FishingFloatDrawer.cs" />
     <Compile Include="Core\Physic\GameObject.cs" />
     <Compile Include="Tests\GameObjectTest.cs" />
+    <Compile Include="Controller\CommandBoat\CommandAccelerate.cs" />
+    <Compile Include="Controller\CommandBoat\CommandBrake.cs" />
+    <Compile Include="Controller\CommandBoat\CommandPlayerBoat.cs" />
+    <Compile Include="Controller\CommandBoat\CommandTurn.cs" />
+    <Compile Include="Controller\CommandRod\CommandRod.cs" />
+    <Compile Include="Controller\CommandRod\CommandMovesFloatAwayFromFishingRod.cs" />
+    <Compile Include="Controller\CommandRod\CommandBringFloatCloser.cs" />
+    <Compile Include="Core\RodStateMachine\RodState.cs" />
+    <Compile Include="Core\RodStateMachine\RodStateReadyToLaunch.cs" />
+    <Compile Include="Core\RodStateMachine\RodStateIdleInTheWater.cs" />
+    <Compile Include="Controller\CommandRod\CommandThrowOrGetBack.cs" />
+    <Compile Include="Draw\FishingLineDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -99,5 +107,8 @@
     <Folder Include="Tests\" />
     <Folder Include="Utils\" />
     <Folder Include="Core\Physic\" />
+    <Folder Include="Controller\CommandBoat\" />
+    <Folder Include="Controller\CommandRod\" />
+    <Folder Include="Core\RodStateMachine\" />
   </ItemGroup>
 </Project>
