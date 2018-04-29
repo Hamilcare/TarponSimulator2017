@@ -64,6 +64,7 @@ namespace Tarpon
 			toDraw.Add (new MapDrawer (graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
 			toDraw.Add (new BoatDrawer (world.playerBoat));
 			toDraw.Add (new FishingFloatDrawer (world.playerBoat, world.playerBoat.FishingRod.FishingFloat, this.GraphicsDevice));
+			toDraw.Add (new FishDrawer (world.FirstFish, this.GraphicsDevice));
 
 			base.Initialize ();
 		}

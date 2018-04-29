@@ -91,6 +91,7 @@
     <Compile Include="Draw\FishingFloatDrawer.cs" />
     <Compile Include="Core\Physic\GameObject.cs" />
     <Compile Include="Tests\GameObjectTest.cs" />
+    <Compile Include="Draw\FishDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
