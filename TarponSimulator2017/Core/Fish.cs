@@ -5,14 +5,19 @@ namespace Tarpon.Core
 {
 	public class Fish : Physics, IUpdatable
 	{
+
+
 		public const float FrictionForceFish = 0.0010f;
-		public const float AccelerationForceFish = 0.0002f;
-		public const float TurnSpeedFish = 0.0001f;
-		public const float MaxTurnAngleFish = 0.02f;
+		public const float AccelerationForceFish = 0.000001f;
+		public const float TurnSpeedFish = 0.0000001f;
+		public const float MaxTurnAngleFish = 0.00002f;
+
+		public FishState CurrentState { get; private set; }
 
 		public Fish (int StartAbscisse, int StartOrdinate) : base (FrictionForceFish, AccelerationForceFish, TurnSpeedFish, MaxTurnAngleFish, StartAbscisse, StartOrdinate)
 		{
 			this.RelativePosition = new Vector2 (StartAbscisse, StartOrdinate);
+			this.CurrentState = new FishStateTriggered (this);
 		}
 
 		public void Update (int now)
