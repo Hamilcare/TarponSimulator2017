@@ -50,7 +50,7 @@ namespace Tarpon.Core
 			Orientation = new Vector2 (0, -1);
 		}
 
-		public float OrientiationFloat ()
+		public float OrientationFloat ()
 		{
 			return (float)Math.Atan2 (Orientation.X, -Orientation.Y);
 		}
@@ -102,17 +102,17 @@ namespace Tarpon.Core
 			ApplicationPoint += Speed * elapsedTime;
 
 			//Set Speed to zero under a certain limit
-			if (Math.Abs (Speed.X) < 0.000001f)
+			if (Math.Abs (Speed.X) < float.Epsilon)
 				Speed = new Vector2 (0, Speed.Y);
-			if (Math.Abs (Speed.Y) < 0.000001f)
+			if (Math.Abs (Speed.Y) < float.Epsilon)
 				Speed = new Vector2 (Speed.X, 0);
 				
 
 			// Update orientation
 			Vector2 newOrientation = Vector2.Normalize (Speed);
-			if (!float.IsNaN (newOrientation.X) && !float.IsNaN (newOrientation.Y)) {
+			if ((!float.IsNaN (newOrientation.X) && !float.IsNaN (newOrientation.Y)) &&
+			    (Math.Abs (newOrientation.X) > float.Epsilon && Math.Abs (newOrientation.Y) > float.Epsilon)) {
 				Orientation = newOrientation;
-
 			}
 	
 			//Must be reset at the end of computation
@@ -121,7 +121,7 @@ namespace Tarpon.Core
 
 			//Using GameObject logic 
 			this.RelativePosition = ApplicationPoint;
-			this.RelativeOrientation = this.OrientiationFloat ();
+			this.RelativeOrientation = this.OrientationFloat ();
 		}
 	}
 }

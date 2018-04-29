@@ -5,6 +5,9 @@ namespace Tarpon.Core
 {
 	public class FishingRod : GameObject, IUpdatable
 	{
+
+		public RodState CurrentState{ get; set; }
+
 		/// <summary>
 		/// Gets the fishing float.
 		/// </summary>
@@ -20,6 +23,7 @@ namespace Tarpon.Core
 			this.RelativePosition = Position;
 			this.FishingFloat = new FishingFloat (Position);
 			this.FishingFloat.FrameOfReference = this;
+			this.CurrentState = new RodStateReadyToLaunch (this);
 
 		}
 
@@ -44,6 +48,7 @@ namespace Tarpon.Core
 		{
 			this.FishingFloat.Update (this.RelativePosition, boatOrientation);
 		}
+
 	}
 }
 

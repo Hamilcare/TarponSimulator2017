@@ -26,7 +26,6 @@ namespace Tarpon.Core
 
 		public void Update (int now)
 		{
-			ComputeTree (this.TotalTransformation);
 			//@FIXME 
 			FirstFish.Update (this.playerBoat.FishingRod.FishingFloat.AbsolutePosition, Vector2.Zero);
 			toUpdate.ForEach (tu => tu.Update (now));
