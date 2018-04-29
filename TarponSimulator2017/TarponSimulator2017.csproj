@@ -87,6 +87,7 @@
     <Compile Include="Draw\FishingFloatDrawer.cs" />
     <Compile Include="Core\Physic\GameObject.cs" />
     <Compile Include="Tests\GameObjectTest.cs" />
+    <Compile Include="Draw\FishDrawer.cs" />
     <Compile Include="Controller\CommandBoat\CommandAccelerate.cs" />
     <Compile Include="Controller\CommandBoat\CommandBrake.cs" />
     <Compile Include="Controller\CommandBoat\CommandPlayerBoat.cs" />
@@ -94,11 +95,14 @@
     <Compile Include="Controller\CommandRod\CommandRod.cs" />
     <Compile Include="Controller\CommandRod\CommandMovesFloatAwayFromFishingRod.cs" />
     <Compile Include="Controller\CommandRod\CommandBringFloatCloser.cs" />
-    <Compile Include="Core\RodStateMachine\RodState.cs" />
-    <Compile Include="Core\RodStateMachine\RodStateReadyToLaunch.cs" />
-    <Compile Include="Core\RodStateMachine\RodStateIdleInTheWater.cs" />
     <Compile Include="Controller\CommandRod\CommandThrowOrGetBack.cs" />
     <Compile Include="Draw\FishingLineDrawer.cs" />
+    <Compile Include="Core\StateMachine\RodStateMachine\RodState.cs" />
+    <Compile Include="Core\StateMachine\RodStateMachine\RodStateIdleInTheWater.cs" />
+    <Compile Include="Core\StateMachine\RodStateMachine\RodStateReadyToLaunch.cs" />
+    <Compile Include="Core\StateMachine\FishStateMachine\FishState.cs" />
+    <Compile Include="Core\StateMachine\FishStateMachine\FishStateIdle.cs" />
+    <Compile Include="Core\StateMachine\FishStateMachine\FishStateTriggered.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -109,6 +113,8 @@
     <Folder Include="Core\Physic\" />
     <Folder Include="Controller\CommandBoat\" />
     <Folder Include="Controller\CommandRod\" />
-    <Folder Include="Core\RodStateMachine\" />
+    <Folder Include="Core\StateMachine\" />
+    <Folder Include="Core\StateMachine\RodStateMachine\" />
+    <Folder Include="Core\StateMachine\FishStateMachine\" />
   </ItemGroup>
 </Project>

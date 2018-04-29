@@ -16,7 +16,7 @@ namespace Tarpon.Core
 
 		public float MaxTurnAngle{ get; private set; }
 
-		public Vector2 Orientation { get; private set; }
+		public Vector2 Orientation { get; set; }
 
 		/** computed each turn **/
 		public Vector2 Acceleration { get; private set; }
