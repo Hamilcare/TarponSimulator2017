@@ -23,11 +23,11 @@ namespace Tarpon.Controller
 		public SceneInGame (World world) : base ()
 		{
 			Scene.world = world;
-			this.ContiniousActions.Add (Keys.Up, new CommandAccelerate (world.playerBoat));
-			this.ContiniousActions.Add (Keys.Right, new CommandTurn (world.playerBoat, Direction.Right));
-			this.ContiniousActions.Add (Keys.Left, new CommandTurn (world.playerBoat, Direction.Left));
-			this.ContiniousActions.Add (Keys.Q, new CommandMovesFloatAwayFromFishingRod (world.playerBoat.FishingRod));
-			this.ContiniousActions.Add (Keys.D, new CommandBringFloatCloser (world.playerBoat.FishingRod));
+			this.ContinuousActions.Add (Keys.Up, new CommandAccelerate (world.playerBoat));
+			this.ContinuousActions.Add (Keys.Right, new CommandTurn (world.playerBoat, Direction.Right));
+			this.ContinuousActions.Add (Keys.Left, new CommandTurn (world.playerBoat, Direction.Left));
+			this.ContinuousActions.Add (Keys.Q, new CommandMovesFloatAwayFromFishingRod (world.playerBoat.FishingRod));
+			this.ContinuousActions.Add (Keys.D, new CommandBringFloatCloser (world.playerBoat.FishingRod));
 			this.OneTimeActions.Add (Keys.Space, new CommandThrowOrGetBack (world.playerBoat.FishingRod));
 		}
 

@@ -11,10 +11,10 @@ namespace Tarpon.Controller
 	public abstract class Scene
 	{
 		/// <summary>
-		/// Gets or sets the continious actions.
+		/// Gets or sets the continuous actions.
 		/// </summary>
-		/// <value>The continious actions like accelerate or turn.</value>
-		public Dictionary<Keys,Command> ContiniousActions { get; protected set; }
+		/// <value>The continuous actions like accelerate or turn.</value>
+		public Dictionary<Keys,Command> ContinuousActions { get; protected set; }
 
 		/// <summary>
 		/// Gets or sets the one time actions.
@@ -28,15 +28,15 @@ namespace Tarpon.Controller
 
 		public Scene ()
 		{
-			ContiniousActions = new Dictionary<Keys,Command> ();
+			ContinuousActions = new Dictionary<Keys,Command> ();
 			OneTimeActions = new Dictionary<Keys, Command> ();
 		}
 
 		public void SceneInputs (GameTime gameTime, KeyboardState _keyboardState, KeyboardState _oldKeyboardState, MouseState mouseState)
 		{
-			ContiniousActions.Keys
+			ContinuousActions.Keys
 				.Where (currentKey => _keyboardState.IsKeyDown (currentKey))
-				.ToList ().ForEach (currentKey => ContiniousActions [currentKey].execute ());
+				.ToList ().ForEach (currentKey => ContinuousActions [currentKey].execute ());
 
 			OneTimeActions.Keys
 				.Where (currentKey => _keyboardState.IsKeyDown (currentKey) && _oldKeyboardState.IsKeyUp (currentKey)) 
@@ -47,4 +47,4 @@ namespace Tarpon.Controller
 
 	}
 }
-
+	
