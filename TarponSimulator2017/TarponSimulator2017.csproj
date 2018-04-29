@@ -98,6 +98,7 @@
     <Compile Include="Core\RodStateMachine\RodStateReadyToLaunch.cs" />
     <Compile Include="Core\RodStateMachine\RodStateIdleInTheWater.cs" />
     <Compile Include="Controller\CommandRod\CommandThrowOrGetBack.cs" />
+    <Compile Include="Draw\FishingLineDrawer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />

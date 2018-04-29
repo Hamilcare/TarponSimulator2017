@@ -4,7 +4,7 @@ namespace Tarpon.Core
 {
 	public class RodStateReadyToLaunch : RodState
 	{
-		const int STEP = 50;
+		const int STEP = 10;
 
 		public RodStateReadyToLaunch (FishingRod Rod) : base (Rod)
 		{
