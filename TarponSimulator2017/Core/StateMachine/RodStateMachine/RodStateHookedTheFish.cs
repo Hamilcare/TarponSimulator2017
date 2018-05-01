@@ -24,10 +24,11 @@ namespace Tarpon.Core
 		public override void ThrowOrGetBack ()
 		{
 			double distance = Vector2.Distance (this.Rod.FishingFloat.RelativePosition, Vector2.Zero);
-			Console.WriteLine ("Distance between float and rod : " + distance);
+
 			if (distance <= this.Rod.FishingFloat.MinimalDistance + 5) {			
 				this.Rod.CurrentState = new RodStateReadyToLaunch (this.Rod);
-				World.RemoveAFish (this.Rod.CaughtFish);
+				World.Instance.RemoveAFish (this.Rod.CaughtFish);
+				this.Rod.CaughtFish = null;
 			}
 		}
 	}

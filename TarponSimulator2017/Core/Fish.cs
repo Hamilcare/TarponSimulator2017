@@ -9,8 +9,6 @@ namespace Tarpon.Core
 	/// </summary>
 	public class Fish : Physics, IUpdatable
 	{
-
-
 		public const float FrictionForceFish = 0.0010f;
 		public const float AccelerationForceFish = 0.000001f;
 		public const float TurnSpeedFish = 0.0000001f;
@@ -23,6 +21,12 @@ namespace Tarpon.Core
 			this.RelativePosition = new Vector2 (StartAbscisse, StartOrdinate);
 			this.CurrentState = new FishStateTriggered (this);
 		}
+
+		/// <summary>
+		/// Creates the random fish.
+		/// </summary>
+		/// <returns>The random fish.</returns>
+
 
 		/// <summary>
 		/// Changes the state to caught the hook if allowed.

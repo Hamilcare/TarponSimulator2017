@@ -13,29 +13,54 @@ namespace Tarpon.Core
 
 		public List<IUpdatable> toUpdate { get; private set; }
 
-		public static World UniqueInstance;
+		private static World UniqueInstance;
 
-		public World ()
+		public static World Instance {
+			get {
+				if (UniqueInstance == null) {
+					UniqueInstance = new World ();
+				}
+				return UniqueInstance;
+			}
+		}
+
+
+		public void InitWorld ()
 		{
-			playerBoat = new Boat (200, 300);
+			playerBoat = new Boat (950, 540);
 			playerBoat.FrameOfReference = this;
-			FirstFish = new Fish (400, 400);
-			FirstFish.FrameOfReference = this;
-			playerBoat.ListOfFishes.Add (FirstFish);
 			toUpdate = new List<IUpdatable> ();
 			toUpdate.Add (playerBoat);
-			toUpdate.Add (FirstFish);
-
-			UniqueInstance = this;
+			//Handle Fish Generation
+			IList<Fish> ListOfFishes = FishFactory.Instance.InitFish (1);
+			this.AddAListOfFish (ListOfFishes);
 		}
 
-
-		public static void RemoveAFish (Fish f)
+		public void AddAfFish (Fish f)
 		{
-			UniqueInstance.playerBoat.FishingRod.CaughtFish = null;
+			f.FrameOfReference = this;
+			playerBoat.ListOfFishes.Add (f);
+			toUpdate.Add (f);
+			TarponGame.AddAFishToDraw (f);
+		}
+
+		public void AddAListOfFish (IList<Fish> List)
+		{
+			foreach (Fish f in List) {
+				AddAfFish (f);	
+			}
+
+		}
+
+		public void RemoveAFish (Fish f)
+		{
+			TarponGame.RemoveAFishToDraw (f);
 			UniqueInstance.playerBoat.ListOfFishes.Remove (f);
 			UniqueInstance.toUpdate.Remove (f);
+			AddAfFish (FishFactory.Instance.CreateRandomFish ());
 		}
+
+
 
 		public void Update (int now)
 		{
