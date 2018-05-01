@@ -9,7 +9,6 @@ namespace Tarpon.Draw
 	{
 
 		Texture2D Texture;
-		int radius = 30;
 
 		float RotationShift = (float)Math.PI;
 		Core.Fish fish;

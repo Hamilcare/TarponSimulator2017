@@ -54,6 +54,8 @@ namespace Tarpon.Draw
 			Color color;
 			if (this.Boat.FishingRod.CurrentState.GetType () == typeof(RodStateIdleInTheWater)) {
 				color = Color.Green;
+			} else if (this.Boat.FishingRod.CurrentState.GetType () == typeof(RodStateHookedTheFish)) {
+				color = Color.Peru;
 			} else {
 				color = Color.Red;
 			}

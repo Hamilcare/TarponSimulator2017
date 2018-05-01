@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace Tarpon.Core
 {
@@ -17,11 +18,18 @@ namespace Tarpon.Core
 		/// <value>The fishing rod.</value>
 		public FishingRod FishingRod{ get; private set; }
 
+		/// <summary>
+		/// Gets the list of fishes. The list is shared with the float and the world.
+		/// </summary>
+		/// <value>The list of fishes.</value>
+		public IList<Fish> ListOfFishes { get; private set; }
 
 		public Boat (int StartAbscisse, int StartOrdinate) : base (FrictionForceBoat, AccelerationForceBoat, TurnSpeedBoat, MaxTurnAngleBoat, StartAbscisse, StartOrdinate)
 		{
-			this.FishingRod = new FishingRod (new Vector2 (0, -80));
+			this.ListOfFishes = new List<Fish> ();
+			this.FishingRod = new FishingRod (new Vector2 (0, -80), ListOfFishes);
 			this.FishingRod.FrameOfReference = this;
+
 		}
 
 
@@ -29,6 +37,9 @@ namespace Tarpon.Core
 		{
 			ComputeMovement (now);
 			this.FishingRod.Update (this.RelativePosition, this.Orientation);
+			foreach (Fish f in ListOfFishes) {
+				f.Update (this.FishingRod.FishingFloat.AbsolutePosition, Vector2.Zero);
+			}
 		}
 
 		public void Update (Vector2 vector, Vector2 anotherVector)

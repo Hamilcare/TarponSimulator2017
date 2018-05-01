@@ -13,21 +13,32 @@ namespace Tarpon.Core
 
 		public List<IUpdatable> toUpdate { get; private set; }
 
+		public static World UniqueInstance;
+
 		public World ()
 		{
 			playerBoat = new Boat (200, 300);
 			playerBoat.FrameOfReference = this;
 			FirstFish = new Fish (400, 400);
 			FirstFish.FrameOfReference = this;
+			playerBoat.ListOfFishes.Add (FirstFish);
 			toUpdate = new List<IUpdatable> ();
 			toUpdate.Add (playerBoat);
 			toUpdate.Add (FirstFish);
+
+			UniqueInstance = this;
+		}
+
+
+		public static void RemoveAFish (Fish f)
+		{
+			UniqueInstance.playerBoat.FishingRod.CaughtFish = null;
+			UniqueInstance.playerBoat.ListOfFishes.Remove (f);
+			UniqueInstance.toUpdate.Remove (f);
 		}
 
 		public void Update (int now)
 		{
-			//@FIXME 
-			FirstFish.Update (this.playerBoat.FishingRod.FishingFloat.AbsolutePosition, Vector2.Zero);
 			toUpdate.ForEach (tu => tu.Update (now));
 			ComputeTree (this.TotalTransformation);
 		}

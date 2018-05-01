@@ -103,6 +103,8 @@
     <Compile Include="Core\StateMachine\FishStateMachine\FishState.cs" />
     <Compile Include="Core\StateMachine\FishStateMachine\FishStateIdle.cs" />
     <Compile Include="Core\StateMachine\FishStateMachine\FishStateTriggered.cs" />
+    <Compile Include="Core\StateMachine\FishStateMachine\FishStateCaughtTheHook.cs" />
+    <Compile Include="Core\StateMachine\RodStateMachine\RodStateHookedTheFish.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
