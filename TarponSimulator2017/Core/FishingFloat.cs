@@ -13,7 +13,14 @@ namespace Tarpon.Core
 		/// <summary>
 		/// minimal distance between rod and float
 		/// </summary>
-		public const int MINIMAL_DISTANCE = 15;
+		private const int MINIMAL_DISTANCE = 15;
+
+		public int MinimalDistance {
+			get {
+				return MINIMAL_DISTANCE;
+			}
+		}
+
 
 		/// <summary>
 		/// maximal distance between rod and float

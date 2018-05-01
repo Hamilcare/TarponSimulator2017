@@ -17,13 +17,13 @@ namespace Tarpon.Draw
 			this.height = height;
 		}
 
-		public void LoadContent(ContentManager content)
+		public void LoadContent (ContentManager content)
 		{
 			Texture = content.Load<Texture2D> ("Content/img/tilesheet");
 			TextureRegion = new Rectangle (1024, 512, 128, 128);
 		}
 
-		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+		public void Draw (SpriteBatch spriteBatch, GameTime gameTime)
 		{
 			for (int i = 0; i < width; i += 128) {
 				for (int j = 0; j < height; j += 128) {

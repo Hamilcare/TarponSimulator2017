@@ -37,6 +37,9 @@ namespace Tarpon.Core
 		{
 			ComputeMovement (now);
 			this.FishingRod.Update (this.RelativePosition, this.Orientation);
+			foreach (Fish f in ListOfFishes) {
+				f.Update (this.FishingRod.FishingFloat.AbsolutePosition, Vector2.Zero);
+			}
 		}
 
 		public void Update (Vector2 vector, Vector2 anotherVector)

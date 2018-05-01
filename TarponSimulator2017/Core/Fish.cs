@@ -35,7 +35,7 @@ namespace Tarpon.Core
 		}
 
 		/// <summary>
-		/// Determines whether this instance can set is current state to desired state
+		/// Determines whether this instance can set its current state to desired state
 		/// </summary>
 		/// <returns><c>true</c> if this instance can set is current state to desired state; otherwise, <c>false</c>.</returns>
 		/// <param name="TypeOfNextState">Type of next state.</param>

@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 
 namespace Tarpon.Core
 {
@@ -22,7 +23,12 @@ namespace Tarpon.Core
 
 		public override void ThrowOrGetBack ()
 		{
-			this.Rod.CurrentState = new RodStateIdleInTheWater (this.Rod);
+			double distance = Vector2.Distance (this.Rod.FishingFloat.RelativePosition, Vector2.Zero);
+			Console.WriteLine ("Distance between float and rod : " + distance);
+			if (distance <= this.Rod.FishingFloat.MinimalDistance + 5) {			
+				this.Rod.CurrentState = new RodStateReadyToLaunch (this.Rod);
+				World.RemoveAFish (this.Rod.CaughtFish);
+			}
 		}
 	}
 }
