@@ -19,6 +19,7 @@ namespace Tarpon.Core
 			playerBoat.FrameOfReference = this;
 			FirstFish = new Fish (400, 400);
 			FirstFish.FrameOfReference = this;
+			playerBoat.ListOfFishes.Add (FirstFish);
 			toUpdate = new List<IUpdatable> ();
 			toUpdate.Add (playerBoat);
 			toUpdate.Add (FirstFish);

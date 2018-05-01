@@ -3,6 +3,10 @@ using Microsoft.Xna.Framework;
 
 namespace Tarpon.Core
 {
+	/// <summary>
+	/// Fish.
+	/// Should be abstract in the future
+	/// </summary>
 	public class Fish : Physics, IUpdatable
 	{
 
@@ -18,6 +22,26 @@ namespace Tarpon.Core
 		{
 			this.RelativePosition = new Vector2 (StartAbscisse, StartOrdinate);
 			this.CurrentState = new FishStateTriggered (this);
+		}
+
+		/// <summary>
+		/// Changes the state to caught the hook if allowed.
+		/// </summary>
+		public void ChangeStateToCaughtTheHook ()
+		{
+			if (IsStateTransitionAllowed (typeof(FishStateCaughtTheHook))) {
+				this.CurrentState = new FishStateCaughtTheHook (this);
+			}
+		}
+
+		/// <summary>
+		/// Determines whether this instance can set is current state to desired state
+		/// </summary>
+		/// <returns><c>true</c> if this instance can set is current state to desired state; otherwise, <c>false</c>.</returns>
+		/// <param name="TypeOfNextState">Type of next state.</param>
+		public Boolean IsStateTransitionAllowed (Type TypeOfNextState)
+		{
+			return true;
 		}
 
 		public void Update (int now)

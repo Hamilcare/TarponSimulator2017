@@ -21,6 +21,12 @@ namespace Tarpon.Core
 		public const int MAXIMAL_DISTANCE = 250;
 
 		/// <summary>
+		/// if a fish is closer of the float than CATCH_RANGE,
+		/// we consider it catches the hook; 
+		/// </summary>
+		public const int CATCH_RANGE = 30;
+
+		/// <summary>
 		/// The current distance between the rod and the float
 		/// </summary>
 		public int CurrentDistance = MINIMAL_DISTANCE;
@@ -33,7 +39,6 @@ namespace Tarpon.Core
 		{
 			this.RelativePosition = StartPosition;
 		}
-
 
 		/// <summary>
 		/// Update Float using elapsed time.
@@ -71,6 +76,22 @@ namespace Tarpon.Core
 			} else {
 				this.CurrentDistance = MINIMAL_DISTANCE;
 			}
+		}
+
+
+		/// <summary>
+		/// Determines whether the given fish can catch the hook
+		/// </summary>
+		/// <returns><c>true</c> if the given fish can catch the hook, also change fish state to FishStateCaughtTheHook; otherwise, <c>false</c>.</returns>
+		/// <param name="f">F.</param>
+		public Boolean IsFishCanCatchTheHook (Fish f)
+		{
+			double DistanceBetweenHookAndFish = Vector2.Distance (this.AbsolutePosition, f.AbsolutePosition);
+			if (DistanceBetweenHookAndFish < CATCH_RANGE) {
+				f.ChangeStateToCaughtTheHook ();
+				return true;
+			}
+			return false;
 		}
 	}
 }

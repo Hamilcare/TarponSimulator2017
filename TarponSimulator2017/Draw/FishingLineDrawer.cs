@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,12 +13,29 @@ namespace Tarpon.Draw
 		Texture2D Texture;
 		float RotationShift;
 
+		/// <summary>
+		/// The state of the list of accepted.
+		/// If a state is accepted, the fishing line must be drawn
+		/// </summary>
+		IList<Type> ListOfAcceptedState;
+
 		public FishingLineDrawer (Core.Boat Boat, Core.FishingRod FishingRod, GraphicsDevice gd)
 		{
 			this.CoreBoat = Boat;
 			this.FishingRod = FishingRod;
 			this.Texture = drawLine (gd);
 			RotationShift = -(float)Math.PI / 2;
+			this.FillAcceptedStateList ();
+		}
+
+		/// <summary>
+		/// Fills the accepted state list.
+		/// </summary>
+		private void FillAcceptedStateList ()
+		{
+			this.ListOfAcceptedState = new List<Type> ();
+			ListOfAcceptedState.Add (typeof(Core.RodStateHookedTheFish));
+			ListOfAcceptedState.Add (typeof(Core.RodStateIdleInTheWater));
 		}
 
 		Texture2D drawLine (GraphicsDevice gd)
@@ -33,7 +51,7 @@ namespace Tarpon.Draw
 
 		public void Draw (SpriteBatch spriteBatch, GameTime gameTime)
 		{
-			if (this.CoreBoat.FishingRod.CurrentState.GetType () == typeof(Core.RodStateIdleInTheWater)) {
+			if (this.ListOfAcceptedState.Contains (this.CoreBoat.FishingRod.CurrentState.GetType ())) {
 				//30 = float radius
 				int LineLenght = (int)((FishingRod.FishingFloat.AbsolutePosition - FishingRod.AbsolutePosition).Length () + 30);
 				spriteBatch.Draw (
