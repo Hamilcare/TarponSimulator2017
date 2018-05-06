@@ -55,3 +55,4 @@ You can inspect them if you have a problem with the previous commands.
 ## Credits
 
  * [Pirate Pack](https://kenney.nl/assets/pirate-pack) under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) by [Kenney.nl](https://kenney.nl/)
+ * [Boxfont Round](https://fontlibrary.org/fr/font/boxfont-round) under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) by [mold] (https://opengameart.org/users/mold)
