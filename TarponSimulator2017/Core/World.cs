@@ -13,21 +13,57 @@ namespace Tarpon.Core
 
 		public List<IUpdatable> toUpdate { get; private set; }
 
-		public World ()
+		private static World UniqueInstance;
+
+		public static World Instance {
+			get {
+				if (UniqueInstance == null) {
+					UniqueInstance = new World ();
+				}
+				return UniqueInstance;
+			}
+		}
+
+
+		public void InitWorld ()
 		{
-			playerBoat = new Boat (200, 300);
+			playerBoat = new Boat (950, 540);
 			playerBoat.FrameOfReference = this;
-			FirstFish = new Fish (400, 400);
-			FirstFish.FrameOfReference = this;
 			toUpdate = new List<IUpdatable> ();
 			toUpdate.Add (playerBoat);
-			toUpdate.Add (FirstFish);
+			//Handle Fish Generation
+			IList<Fish> ListOfFishes = FishFactory.Instance.InitFish (1);
+			this.AddAListOfFish (ListOfFishes);
 		}
+
+		public void AddAfFish (Fish f)
+		{
+			f.FrameOfReference = this;
+			playerBoat.ListOfFishes.Add (f);
+			toUpdate.Add (f);
+			TarponGame.AddAFishToDraw (f);
+		}
+
+		public void AddAListOfFish (IList<Fish> List)
+		{
+			foreach (Fish f in List) {
+				AddAfFish (f);	
+			}
+
+		}
+
+		public void RemoveAFish (Fish f)
+		{
+			TarponGame.RemoveAFishToDraw (f);
+			UniqueInstance.playerBoat.ListOfFishes.Remove (f);
+			UniqueInstance.toUpdate.Remove (f);
+			AddAfFish (FishFactory.Instance.CreateRandomFish ());
+		}
+
+
 
 		public void Update (int now)
 		{
-			//@FIXME 
-			FirstFish.Update (this.playerBoat.FishingRod.FishingFloat.AbsolutePosition, Vector2.Zero);
 			toUpdate.ForEach (tu => tu.Update (now));
 			ComputeTree (this.TotalTransformation);
 		}

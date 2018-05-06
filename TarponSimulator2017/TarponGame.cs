@@ -16,6 +16,8 @@ namespace Tarpon
 {
 	public class TarponGame : Game
 	{
+		private static TarponGame UniqueInstance;
+
 		public SpriteBatch spriteBatch { get; private set; }
 
 		GraphicsDeviceManager graphics;
@@ -23,7 +25,17 @@ namespace Tarpon
 		KeyboardState oldKeyboardState;
 		MouseState mouseState;
 
+		MapDrawer MapDrawer;
 
+		/// <summary>
+		/// The fish dictionnary.
+		/// Using it to add and remove fish to draw
+		/// </summary>
+		IDictionary<Fish,IDrawer> FishDictionnary;
+
+		/// <summary>
+		/// Everything to draw but fishes
+		/// </summary>
 		List<IDrawer> toDraw;
 		IController toControl;
 		Scene scene;
@@ -40,8 +52,10 @@ namespace Tarpon
 			graphics = new GraphicsDeviceManager (this);
 			graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
 			graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-			graphics.IsFullScreen = false;
+			graphics.IsFullScreen = true;
 			graphics.ApplyChanges ();
+			FishDictionnary = new Dictionary<Fish, IDrawer> ();
+			UniqueInstance = this;
 		}
 
 
@@ -50,21 +64,19 @@ namespace Tarpon
 			HEIGHT = Window.ClientBounds.Height;
 			WIDTH = Window.ClientBounds.Width;
 
-			World world = new World (); 
+			World world = World.Instance;
+			world.InitWorld ();
 
 			//Deso Lucie, j'ai mis un bye a ton singleton, je sais pas comment ça marche ptdr
 			scene = new SceneInGame (world);
 			toDraw = new List<IDrawer> ();
 			toControl = new MasterController (world, scene);
 
-
 			// Extraction of elements to draw should be done in the "Draw" folder
 			// Note that the order in the list is important => items at the beginning will be drawn fist
-			//toDraw.AddRange(world.Boats.Select(b => new BoatDrawer(b)));
-			toDraw.Add (new MapDrawer (graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight));
+			MapDrawer = new MapDrawer (graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 			toDraw.Add (new BoatDrawer (world.playerBoat));
 			toDraw.Add (new FishingFloatDrawer (world.playerBoat, world.playerBoat.FishingRod.FishingFloat, this.GraphicsDevice));
-			toDraw.Add (new FishDrawer (world.FirstFish, this.GraphicsDevice));
 			toDraw.Add (new FishingLineDrawer (world.playerBoat, world.playerBoat.FishingRod, this.GraphicsDevice));
 
 			base.Initialize ();
@@ -73,6 +85,8 @@ namespace Tarpon
 		protected override void LoadContent ()
 		{
 			spriteBatch = new SpriteBatch (GraphicsDevice);
+			MapDrawer.LoadContent (Content);
+			FishDictionnary.Keys.ToList ().ForEach (currentKey => FishDictionnary [currentKey].LoadContent (Content));
 			toDraw.ForEach (td => td.LoadContent (Content));
 		}
 
@@ -98,10 +112,24 @@ namespace Tarpon
 			spriteBatch.Begin ();
 
 			//Draw elements
+			MapDrawer.Draw (spriteBatch, gameTime);
+			FishDictionnary.Keys.ToList ().ForEach (currentFish => FishDictionnary [currentFish].Draw (spriteBatch, gameTime));
 			toDraw.ForEach (td => td.Draw (spriteBatch, gameTime));
 
 			// Stop drawing
 			spriteBatch.End ();
+		}
+
+		public static void AddAFishToDraw (Fish f)
+		{
+			FishDrawer fd = new FishDrawer (f, UniqueInstance.GraphicsDevice);
+			fd.LoadContent (UniqueInstance.Content);
+			UniqueInstance.FishDictionnary.Add (f, fd);
+		}
+
+		public static void RemoveAFishToDraw (Fish f)
+		{
+			UniqueInstance.FishDictionnary.Remove (f);
 		}
 
 		public static void Main ()
