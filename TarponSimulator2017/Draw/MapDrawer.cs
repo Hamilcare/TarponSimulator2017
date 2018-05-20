@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Tarpon.Core;
+using System;
 
 namespace Tarpon.Draw
 {
@@ -8,13 +10,13 @@ namespace Tarpon.Draw
 	{
 		Texture2D Texture;
 		Rectangle TextureRegion;
-		int width;
-		int height;
+		GraphicsDeviceManager Graphics;
+		World CoreWorld;
 
-		public MapDrawer (int width, int height)
+		public MapDrawer (GraphicsDeviceManager graphics, World coreWorld)
 		{
-			this.width = width;
-			this.height = height;
+			CoreWorld = coreWorld;
+			Graphics = graphics;
 		}
 
 		public void LoadContent (ContentManager content)
@@ -25,8 +27,12 @@ namespace Tarpon.Draw
 
 		public void Draw (SpriteBatch spriteBatch, GameTime gameTime)
 		{
-			for (int i = 0; i < width; i += 128) {
-				for (int j = 0; j < height; j += 128) {
+			int demiSquareSide = System.Math.Max (Graphics.PreferredBackBufferHeight, Graphics.PreferredBackBufferWidth);
+			float startX = CoreWorld.playerBoat.AbsolutePosition.X - demiSquareSide;
+			float startY = CoreWorld.playerBoat.AbsolutePosition.Y - demiSquareSide;
+
+			for (float i = startX - startX % 128; i < startX+2*demiSquareSide; i += 128) {
+				for (float j = startY - startY % 128; j < startY+2*demiSquareSide; j += 128) {
 					spriteBatch.Draw (
 						Texture,				    // Water PNG 
 						new Vector2 (i, j), 		// Position 

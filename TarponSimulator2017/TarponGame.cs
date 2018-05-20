@@ -39,6 +39,7 @@ namespace Tarpon
 		List<IDrawer> toDraw;
 		IController toControl;
 		Scene scene;
+		FollowingCamera worldCamera;
 
 		static public int WIDTH;
 		static public int HEIGHT;
@@ -72,9 +73,11 @@ namespace Tarpon
 			toDraw = new List<IDrawer> ();
 			toControl = new MasterController (world, scene);
 
+			worldCamera = new FollowingCamera (graphics, world.playerBoat);
+
 			// Extraction of elements to draw should be done in the "Draw" folder
 			// Note that the order in the list is important => items at the beginning will be drawn fist
-			MapDrawer = new MapDrawer (graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+			MapDrawer = new MapDrawer (graphics, world);
 			toDraw.Add (new BoatDrawer (world.playerBoat));
 			toDraw.Add (new FishingFloatDrawer (world.playerBoat, world.playerBoat.FishingRod.FishingFloat, this.GraphicsDevice));
 			toDraw.Add (new FishingLineDrawer (world.playerBoat, world.playerBoat.FishingRod, this.GraphicsDevice));
@@ -109,7 +112,9 @@ namespace Tarpon
 			base.Draw (gameTime);
 
 			// Start drawing
-			spriteBatch.Begin ();
+			// samplerState is needed, otherwise some lines are drawm between sea tiles
+			// https://gamedev.stackexchange.com/a/25121
+			spriteBatch.Begin (samplerState: SamplerState.PointClamp, transformMatrix: worldCamera.TransformMatrix);
 
 			//Draw elements
 			MapDrawer.Draw (spriteBatch, gameTime);
