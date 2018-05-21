@@ -105,6 +105,7 @@
     <Compile Include="Core\StateMachine\FishStateMachine\FishStateTriggered.cs" />
     <Compile Include="Core\StateMachine\FishStateMachine\FishStateCaughtTheHook.cs" />
     <Compile Include="Core\StateMachine\RodStateMachine\RodStateHookedTheFish.cs" />
+    <Compile Include="Draw\Camera\FollowingCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -118,5 +119,6 @@
     <Folder Include="Core\StateMachine\" />
     <Folder Include="Core\StateMachine\RodStateMachine\" />
     <Folder Include="Core\StateMachine\FishStateMachine\" />
+    <Folder Include="Draw\Camera\" />
   </ItemGroup>
 </Project>
