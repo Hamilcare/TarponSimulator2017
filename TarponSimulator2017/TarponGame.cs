@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -131,9 +132,13 @@ namespace Tarpon
 		{
 			UniqueInstance.FishDictionnary.Remove (f);
 		}
+			
+		public static void Main() {
+			// Prevent a bug on Linux with Console.WriteLine
+			// Issue can be found here: https://github.com/mono/mono/issues/6752
+			// Can be safely deleted starting from mono 5.12
+			Environment.SetEnvironmentVariable ("TERM","xterm");
 
-		public static void Main ()
-		{
 			var game = new TarponGame ();
 			game.Run ();
 		}
